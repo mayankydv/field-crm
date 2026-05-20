@@ -4,29 +4,30 @@ const API =
 "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
 
 
+
 async function loadUsers(){
 
-let dropdown =
+try{
+
+const dropdown =
 document.getElementById("name");
 
 dropdown.innerHTML =
 '<option>Select User</option>';
 
-let res =
+const res =
 await fetch(
 API + "?action=users"
 );
 
-let users =
+const users =
 await res.json();
 
-
-users.forEach(u=>{
+users.forEach(function(u){
 
 if(u.active){
 
 dropdown.innerHTML +=
-
 `<option value="${u.name}">
 ${u.name}
 </option>`;
@@ -36,22 +37,31 @@ ${u.name}
 });
 
 }
+catch(e){
+
+console.log(e);
+
+}
+
+}
 
 
 
 async function login(){
 
-let name =
+try{
+
+const name =
 document.getElementById("name").value;
 
-let pin =
+const pin =
 document.getElementById("pin").value;
 
-let msg =
+const msg =
 document.getElementById("msg");
 
 
-let res =
+const res =
 await fetch(
 API,
 {
@@ -74,7 +84,7 @@ pin:pin
 );
 
 
-let data =
+const data =
 await res.json();
 
 
@@ -92,8 +102,20 @@ msg.innerHTML =
 }
 
 }
+catch(e){
 
+console.log(e);
+
+}
+
+}
+
+
+window.onload =
+function(){
 
 loadUsers();
+
+};
 
 </script>
