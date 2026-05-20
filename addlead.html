@@ -108,11 +108,9 @@ document.getElementById(
 "msg"
 );
 
-
 try{
 
 const res =
-
 await fetch(
 
 API,
@@ -124,7 +122,6 @@ method:"POST",
 headers:{
 
 "Content-Type":
-
 "application/json"
 
 },
@@ -133,7 +130,8 @@ body:
 
 JSON.stringify({
 
-action:"addLead",
+action:
+"addLead",
 
 organisation:
 
@@ -183,15 +181,12 @@ localStorage.user
 
 
 const data =
-
 await res.json();
-
 
 
 if(data.ok){
 
 msg.innerHTML =
-
 "Lead Saved";
 
 msg.style.color =
@@ -201,7 +196,6 @@ msg.style.color =
 else{
 
 msg.innerHTML =
-
 "Error";
 
 }
@@ -213,7 +207,6 @@ catch(e){
 console.log(e);
 
 msg.innerHTML =
-
 "Server Error";
 
 msg.style.color =
@@ -222,19 +215,6 @@ msg.style.color =
 }
 
 }
-
-}
-else{
-
-msg.innerHTML =
-
-"Error";
-
-}
-
-
-}
-
 
 </script>
 
