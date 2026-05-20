@@ -132,15 +132,47 @@ const API =
 
 async function loadUsers(){
 
+const dropdown =
+document.getElementById("name");
+
+dropdown.innerHTML =
+'<option>Select User</option>';
+
+try{
+
 const res =
 await fetch(
-API + "?action=users",
-{
-method:"GET",
-mode:"cors"
-}
+API + "?action=users"
 );
 
+const users =
+await res.json();
+
+users.forEach(u=>{
+
+if(u.active){
+
+dropdown.innerHTML +=
+`<option value="${u.name}">
+${u.name}
+</option>`;
+
+}
+
+});
+
+}catch(err){
+
+console.log(err);
+
+dropdown.innerHTML =
+'<option>Error loading users</option>';
+
+}
+
+}
+
+loadUsers();
 
 const users =
 
