@@ -1,121 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Field CRM</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.card{
+background:white;
+padding:30px;
+width:320px;
+border-radius:12px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+input,
+select,
+button{
+
+width:100%;
+padding:14px;
+margin-top:12px;
+box-sizing:border-box;
+font-size:16px;
+
+}
+
+button{
+
+background:#1e88e5;
+color:white;
+border:none;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#1565c0;
+
+}
+
+#msg{
+
+margin-top:15px;
+font-weight:bold;
+text-align:center;
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="card">
+
+<h2>
+Field CRM Login
+</h2>
+
+
+
+<select id="name">
+
+<option>
+Loading users...
+</option>
+
+</select>
+
+
+
+<input
+
+id="pin"
+
+type="password"
+
+placeholder="PIN">
+
+
+
+<button
+
+onclick="login()">
+
+Login
+
+</button>
+
+
+
+<p id="msg"></p>
+
+
+
+</div>
+
+
+
 <script>
 
+
 const API =
+
 "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+
 
 
 
 async function loadUsers(){
 
+
 try{
 
+
 const dropdown =
-document.getElementById("name");
 
-dropdown.innerHTML =
-'<option>Select User</option>';
-
-const res =
-await fetch(
-API + "?action=users"
+document.getElementById(
+"name"
 );
 
+
+
+dropdown.innerHTML =
+
+"<option>Select User</option>";
+
+
+
+const res =
+
+await fetch(
+
+API +
+"?action=users"
+
+);
+
+
+
 const users =
+
 await res.json();
 
-users.forEach(function(u){
 
-if(u.active){
+
+
+users.forEach(
+
+function(u){
+
+if(
+
+u.active
+
+){
 
 dropdown.innerHTML +=
-`<option value="${u.name}">
+
+`
+
+<option value="${u.name}">
+
 ${u.name}
-</option>`;
 
-}
+</option>
 
-});
-
-}
-catch(e){
-
-console.log(e);
+`;
 
 }
 
 }
+
+);
+
+
+}
+catch(error){
+
+console.log(error);
+
+document
+.getElementById(
+"name"
+)
+.innerHTML =
+
+"<option>Error Loading</option>";
+
+}
+
+
+}
+
+
 
 
 
 async function login(){
 
-try{
+
 
 const name =
-document.getElementById("name").value;
+
+document
+.getElementById(
+"name"
+)
+.value;
+
+
 
 const pin =
-document.getElementById("pin").value;
+
+document
+.getElementById(
+"pin"
+)
+.value;
+
+
 
 const msg =
-document.getElementById("msg");
+
+document
+.getElementById(
+"msg"
+);
+
+
+
+try{
 
 
 const res =
+
 await fetch(
+
 API,
+
 {
+
 method:"POST",
 
 headers:{
+
 "Content-Type":
+
 "application/json"
+
 },
 
-body:JSON.stringify({
+body:
+
+JSON.stringify({
 
 action:"login",
+
 name:name,
+
 pin:pin
 
 })
 
 }
+
 );
 
 
+
 const data =
+
 await res.json();
 
 
-if(data.ok){
+
+
+if(
+
+data.ok
+
+){
 
 msg.innerHTML =
+
 "Login Success";
+
+msg.style.color =
+
+"green";
+
+
+localStorage.setItem(
+
+"user",
+
+data.user
+
+);
+
+
+localStorage.setItem(
+
+"role",
+
+data.role
+
+);
+
+
 
 }
 else{
 
+
 msg.innerHTML =
+
 "Wrong PIN";
 
-}
+msg.style.color =
 
-}
-catch(e){
+"red";
 
-console.log(e);
 
 }
 
+
+
 }
+catch(error){
+
+console.log(error);
+
+msg.innerHTML =
+
+"Server Error";
+
+}
+
+
+}
+
 
 
 window.onload =
+
 function(){
 
 loadUsers();
 
 };
 
+
 </script>
+
+
+
+</body>
+
+</html>
