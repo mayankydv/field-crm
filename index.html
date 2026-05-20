@@ -1,14 +1,282 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Field CRM</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+background:#f4f4f4;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+}
+
+.card{
+
+background:white;
+
+padding:30px;
+
+width:320px;
+
+border-radius:12px;
+
+box-shadow:
+0 5px 20px rgba(0,0,0,.1);
+
+}
+
+
+input,
+select,
+button{
+
+width:100%;
+
+padding:12px;
+
+margin-top:12px;
+
+box-sizing:border-box;
+
+}
+
+
+button{
+
+background:#1e88e5;
+
+border:none;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+</style>
+
+
 </head>
+
+
 
 <body>
 
-<h1>
-Field CRM Working
-</h1>
+<div class="card">
+
+<h2>
+
+Field CRM Login
+
+</h2>
+
+
+<select id="name">
+
+<option>
+
+Select User
+
+</option>
+
+</select>
+
+
+
+<input
+
+id="pin"
+
+type="password"
+
+placeholder="PIN">
+
+
+
+<button
+onclick="login()">
+
+Login
+
+</button>
+
+
+
+<p id="msg">
+
+</p>
+
+
+</div>
+
+
+
+<script>
+
+const API =
+
+"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+
+
+
+async function loadUsers(){
+
+const res =
+
+await fetch(
+
+API +
+
+"?action=users"
+
+);
+
+
+const users =
+
+await res.json();
+
+
+
+users.forEach(
+
+u=>{
+
+if(
+
+u.active
+
+){
+
+name.innerHTML +=
+
+`
+
+<option>
+
+${u.name}
+
+</option>
+
+`;
+
+}
+
+}
+
+);
+
+}
+
+
+
+async function login(){
+
+
+const body={
+
+action:"login",
+
+name:
+
+document
+.getElementById(
+"name"
+).value,
+
+
+pin:
+
+document
+.getElementById(
+"pin"
+).value
+
+};
+
+
+
+const res=
+
+await fetch(
+
+API,
+
+{
+
+method:"POST",
+
+body:
+JSON.stringify(
+body
+)
+
+}
+
+);
+
+
+
+const data=
+
+await res.json();
+
+
+
+if(
+
+data.ok
+
+){
+
+localStorage.user=
+data.user;
+
+
+localStorage.role=
+data.role;
+
+
+msg.innerHTML=
+
+"Login Success";
+
+
+}
+
+
+else{
+
+
+msg.innerHTML=
+
+"Wrong PIN";
+
+
+}
+
+
+
+}
+
+
+
+loadUsers();
+
+</script>
+
 
 </body>
+
 </html>
