@@ -1,122 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Field CRM</title>
 
 <style>
 
 body{
-
 font-family:Arial;
 background:#f4f4f4;
-
 display:flex;
-
 justify-content:center;
 align-items:center;
-
 height:100vh;
-
+margin:0;
 }
 
 .card{
-
 background:white;
-
 padding:30px;
-
 width:320px;
-
 border-radius:12px;
-
-box-shadow:
-0 5px 20px rgba(0,0,0,.1);
-
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
-
 
 input,
 select,
 button{
-
 width:100%;
-
-padding:12px;
-
+padding:14px;
 margin-top:12px;
-
 box-sizing:border-box;
-
+font-size:16px;
 }
-
 
 button{
-
 background:#1e88e5;
-
 border:none;
-
 color:white;
-
 cursor:pointer;
-
 }
 
+button:hover{
+background:#1565c0;
+}
+
+#msg{
+margin-top:15px;
+font-weight:bold;
+text-align:center;
+}
 
 </style>
-
-
 </head>
-
 
 
 <body>
 
 <div class="card">
 
-<h2>
-
-Field CRM Login
-
-</h2>
+<h2>Field CRM Login</h2>
 
 
 <select id="name">
-
-<option>
-
-Select User
-
-</option>
-
+<option>Select User</option>
 </select>
 
 
-
 <input
-
 id="pin"
-
 type="password"
-
 placeholder="PIN">
 
 
-
-<button
-onclick="login()">
-
+<button onclick="login()">
 Login
-
 </button>
 
 
-
-<p id="msg">
-
-</p>
-
+<p id="msg"></p>
 
 </div>
 
@@ -125,7 +86,6 @@ Login
 <script>
 
 const API =
-
 "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
 
 
@@ -142,7 +102,11 @@ try{
 
 const res =
 await fetch(
-API + "?action=users"
+API + "?action=users",
+{
+method:"GET",
+mode:"cors"
+}
 );
 
 const users =
@@ -161,82 +125,34 @@ ${u.name}
 
 });
 
-}catch(err){
+}
+catch(err){
 
 console.log(err);
 
 dropdown.innerHTML =
-'<option>Error loading users</option>';
+'<option>Error Loading</option>';
 
 }
 
 }
 
-loadUsers();
-
-const users =
-
-await res.json();
-
-
-
-users.forEach(
-
-u=>{
-
-if(
-
-u.active
-
-){
-
-name.innerHTML +=
-
-`
-
-<option>
-
-${u.name}
-
-</option>
-
-`;
-
-}
-
-}
-
-);
-
-}
 
 
 
 async function login(){
 
+const name =
+document.getElementById("name").value;
 
-const body={
+const pin =
+document.getElementById("pin").value;
 
-action:"login",
-
-name:
-
-document
-.getElementById(
-"name"
-).value,
+const msg =
+document.getElementById("msg");
 
 
-pin:
-
-document
-.getElementById(
-"pin"
-).value
-
-};
-
-
+try{
 
 const res =
 await fetch(
@@ -244,57 +160,67 @@ API,
 {
 method:"POST",
 mode:"cors",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify({
+
 action:"login",
-name:name.value,
-pin:pin.value
+name:name,
+pin:pin
+
 })
+
 }
 );
 
-
-const data=
-
+const data =
 await res.json();
 
 
+if(data.ok){
 
-if(
+localStorage.setItem(
+"user",
+data.user
+);
 
-data.ok
+localStorage.setItem(
+"role",
+data.role
+);
 
-){
-
-localStorage.user=
-data.user;
-
-
-localStorage.role=
-data.role;
-
-
-msg.innerHTML=
-
+msg.innerHTML =
 "Login Success";
 
+msg.style.color =
+"green";
 
 }
-
-
 else{
 
-
-msg.innerHTML=
-
+msg.innerHTML =
 "Wrong PIN";
 
+msg.style.color =
+"red";
 
 }
 
+}
+catch(err){
 
+msg.innerHTML =
+"Server Error";
+
+msg.style.color =
+"red";
+
+console.log(err);
+
+}
 
 }
 
@@ -306,5 +232,4 @@ loadUsers();
 
 
 </body>
-
 </html>
