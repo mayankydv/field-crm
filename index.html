@@ -124,98 +124,51 @@ const API =
 "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
 
 
+async function login(){
 
+const name =
+document.getElementById("name").value;
 
-async function loadUsers(){
+const pin =
+document.getElementById("pin").value;
 
-
-try{
-
-
-const dropdown =
-
-document.getElementById(
-"name"
-);
-
-
-
-dropdown.innerHTML =
-
-"<option>Select User</option>";
-
-
+const msg =
+document.getElementById("msg");
 
 const res =
-
 await fetch(
 
 API +
-"?action=users"
+"?action=login" +
+"&name=" +
+encodeURIComponent(name) +
+"&pin=" +
+encodeURIComponent(pin)
 
 );
 
-
-
-const users =
-
+const data =
 await res.json();
 
+if(data.ok){
 
+msg.innerHTML =
+"Login Success";
 
+}
+else{
 
-users.forEach(
-
-function(u){
-
-if(
-
-u.active
-
-){
-
-dropdown.innerHTML +=
-
-`
-
-<option value="${u.name}">
-
-${u.name}
-
-</option>
-
-`;
+msg.innerHTML =
+"Wrong PIN";
 
 }
 
 }
 
-);
 
-
-}
-catch(error){
-
-console.log(error);
-
-document
-.getElementById(
-"name"
-)
-.innerHTML =
-
-"<option>Error Loading</option>";
-
-}
-
-
-}
-
-
-
-
-
-async function login(){
+  
+  
+  async function login(){
 
 
 
