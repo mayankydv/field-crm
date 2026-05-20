@@ -103,58 +103,81 @@ const API =
 
 async function saveLead(){
 
+const msg =
+document.getElementById(
+"msg"
+);
+
+
+try{
 
 const res =
 
 await fetch(
 
-API +
+API,
 
-"?action=addLead" +
+{
 
-"&organisation=" +
+method:"POST",
 
-encodeURIComponent(
+headers:{
 
-organisation.value
+"Content-Type":
 
+"application/json"
+
+},
+
+body:
+
+JSON.stringify({
+
+action:"addLead",
+
+organisation:
+
+document
+.getElementById(
+"organisation"
 )
+.value,
 
-+
 
-"&poc1=" +
+poc1:
 
-encodeURIComponent(
-
-poc1.value
-
+document
+.getElementById(
+"poc1"
 )
+.value,
 
-+
 
-"&poc2=" +
+poc2:
 
-encodeURIComponent(
-
-poc2.value
-
+document
+.getElementById(
+"poc2"
 )
+.value,
 
-+
 
-"&audienceType=" +
+audienceType:
 
-encodeURIComponent(
-
-audienceType.value
-
+document
+.getElementById(
+"audienceType"
 )
+.value,
 
-+
 
-"&owner=" +
+owner:
 
 localStorage.user
+
+})
+
+}
 
 );
 
@@ -165,15 +188,40 @@ await res.json();
 
 
 
-if(
-
-data.ok
-
-){
+if(data.ok){
 
 msg.innerHTML =
 
 "Lead Saved";
+
+msg.style.color =
+"green";
+
+}
+else{
+
+msg.innerHTML =
+
+"Error";
+
+}
+
+
+}
+catch(e){
+
+console.log(e);
+
+msg.innerHTML =
+
+"Server Error";
+
+msg.style.color =
+"red";
+
+}
+
+}
 
 }
 else{
