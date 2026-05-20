@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Add Lead</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+}
+
+input,
+button{
+
+width:100%;
+padding:12px;
+margin-top:10px;
+box-sizing:border-box;
+
+}
+
+button{
+
+background:#1e88e5;
+color:white;
+border:none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+<h2>
+
+Add Lead
+
+</h2>
+
+
+<input
+id="organisation"
+placeholder="Organisation">
+
+
+<input
+id="poc1"
+placeholder="POC1">
+
+
+<input
+id="poc2"
+placeholder="POC2">
+
+
+<input
+id="audienceType"
+placeholder="Audience Type">
+
+
+<button
+onclick="saveLead()">
+
+Save Lead
+
+</button>
+
+
+<p id="msg">
+
+</p>
+
+
+</div>
+
+
+
+<script>
+
+
+const API =
+
+"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+
+
+
+async function saveLead(){
+
+
+const res =
+
+await fetch(
+
+API +
+
+"?action=addLead" +
+
+"&organisation=" +
+
+encodeURIComponent(
+
+organisation.value
+
+)
+
++
+
+"&poc1=" +
+
+encodeURIComponent(
+
+poc1.value
+
+)
+
++
+
+"&poc2=" +
+
+encodeURIComponent(
+
+poc2.value
+
+)
+
++
+
+"&audienceType=" +
+
+encodeURIComponent(
+
+audienceType.value
+
+)
+
++
+
+"&owner=" +
+
+localStorage.user
+
+);
+
+
+const data =
+
+await res.json();
+
+
+
+if(
+
+data.ok
+
+){
+
+msg.innerHTML =
+
+"Lead Saved";
+
+}
+else{
+
+msg.innerHTML =
+
+"Error";
+
+}
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
