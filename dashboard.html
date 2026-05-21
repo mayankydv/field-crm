@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang=\"en\">
+<html lang="en">
 <head>
-<meta charset=\"UTF-8\">
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard - Ratlam Hospital CRM</title>
-<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
-<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
-.navbar{background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+body{font-family:'Inter',system-ui,sans-serif;background:#f3f4f6;min-height:100vh;}
+.navbar{background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;}
 .navbar-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;}
 .navbar-user{display:flex;align-items:center;gap:20px;}
 .user-info{text-align:right;}
 .user-info strong{display:block;font-size:16px;}
 .user-info span{font-size:13px;opacity:0.9;}
-.btn-logout{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s;}
+.btn-logout{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;}
 .btn-logout:hover{background:white;color:#0369a1;}
 .container{max-width:1400px;margin:0 auto;padding:32px 20px;}
 .welcome{margin-bottom:32px;}
 .welcome h1{font-size:32px;color:#111827;margin-bottom:8px;}
 .welcome p{font-size:16px;color:#6b7280;}
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-bottom:40px;}
-.stat-card{background:white;border-radius:16px;padding:24px;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform 0.3s;}
-.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.12);}
+.stat-card{background:white;border-radius:16px;padding:24px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+.stat-card:hover{transform:translateY(-4px);}
 .stat-card.blue{border-left:4px solid #0ea5e9;}
 .stat-card.green{border-left:4px solid #10b981;}
 .stat-card.purple{border-left:4px solid #8b5cf6;}
@@ -36,7 +36,7 @@ body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
 .stat-value{font-size:36px;font-weight:700;color:#111827;margin-bottom:8px;}
 .stat-label{font-size:14px;color:#6b7280;font-weight:500;}
 .actions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-.action-btn{background:white;border:none;border-radius:16px;padding:28px;display:flex;align-items:center;gap:20px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:left;}
+.action-btn{background:white;border:none;border-radius:16px;padding:28px;display:flex;align-items:center;gap:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:left;font-family:inherit;}
 .action-btn:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.15);}
 .action-icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;color:white;}
 .action-btn.blue .action-icon{background:linear-gradient(135deg,#0ea5e9,#0369a1);}
@@ -47,81 +47,77 @@ body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
 .action-btn.dark .action-icon{background:linear-gradient(135deg,#1f2937,#111827);}
 .action-content h3{font-size:18px;color:#111827;margin-bottom:6px;}
 .action-content p{font-size:14px;color:#6b7280;}
-.skeleton-card{background:white;border-radius:16px;padding:24px;height:140px;animation:pulse 1.5s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
 @media(max-width:768px){.navbar{flex-direction:column;gap:16px;}.stats-grid,.actions-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-<div class=\"navbar\">
-  <div class=\"navbar-brand\"><i class=\"fas fa-hospital\"></i><span>Ratlam Hospital</span></div>
-  <div class=\"navbar-user\">
-    <div class=\"user-info\"><strong id=\"userName\"></strong><span id=\"userRole\"></span></div>
-    <button class=\"btn-logout\" onclick=\"logout()\"><i class=\"fas fa-sign-out-alt\"></i> Logout</button>
+<div class="navbar">
+  <div class="navbar-brand"><i class="fas fa-hospital"></i><span>Ratlam Hospital</span></div>
+  <div class="navbar-user">
+    <div class="user-info"><strong id="userName"></strong><span id="userRole"></span></div>
+    <button class="btn-logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
   </div>
 </div>
-<div class=\"container\">
-  <div class=\"welcome\">
-    <h1>Welcome back, <span id=\"welcomeName\"></span>!</h1>
+<div class="container">
+  <div class="welcome">
+    <h1>Welcome back, <span id="welcomeName"></span>!</h1>
     <p>Here's what's happening with your sales today.</p>
   </div>
-  
-  <div class=\"stats-grid\" id=\"statsGrid\">
-    <div class=\"stat-card blue\">
-      <div class=\"stat-icon\"><i class=\"fas fa-users\"></i></div>
-      <div class=\"stat-value\" id=\"totalLeads\">-</div>
-      <div class=\"stat-label\">Total Leads</div>
+  <div class="stats-grid">
+    <div class="stat-card blue">
+      <div class="stat-icon"><i class="fas fa-users"></i></div>
+      <div class="stat-value" id="totalLeads">-</div>
+      <div class="stat-label">Total Leads</div>
     </div>
-    <div class=\"stat-card green\">
-      <div class=\"stat-icon\"><i class=\"fas fa-handshake\"></i></div>
-      <div class=\"stat-value\" id=\"totalMeetings\">-</div>
-      <div class=\"stat-label\">Meetings Completed</div>
+    <div class="stat-card green">
+      <div class="stat-icon"><i class="fas fa-handshake"></i></div>
+      <div class="stat-value" id="totalMeetings">-</div>
+      <div class="stat-label">Meetings Completed</div>
     </div>
-    <div class=\"stat-card purple\">
-      <div class=\"stat-icon\"><i class=\"fas fa-chart-line\"></i></div>
-      <div class=\"stat-value\" id=\"activeLeads\">-</div>
-      <div class=\"stat-label\">Active Leads</div>
+    <div class="stat-card purple">
+      <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+      <div class="stat-value" id="activeLeads">-</div>
+      <div class="stat-label">Active Leads</div>
     </div>
-    <div class=\"stat-card orange\">
-      <div class=\"stat-icon\"><i class=\"fas fa-clock\"></i></div>
-      <div class=\"stat-value\" id=\"pendingFollowups\">-</div>
-      <div class=\"stat-label\">Pending Followups</div>
+    <div class="stat-card orange">
+      <div class="stat-icon"><i class="fas fa-clock"></i></div>
+      <div class="stat-value" id="pendingFollowups">-</div>
+      <div class="stat-label">Pending Followups</div>
     </div>
   </div>
-  
-  <div class=\"actions-grid\">
-    <button class=\"action-btn blue\" onclick=\"location.href='addlead.html'\">
-      <div class=\"action-icon\"><i class=\"fas fa-user-plus\"></i></div>
-      <div class=\"action-content\"><h3>Add New Lead</h3><p>Create a new lead entry</p></div>
+  <div class="actions-grid">
+    <button class="action-btn blue" onclick="location.href='addlead.html'">
+      <div class="action-icon"><i class="fas fa-user-plus"></i></div>
+      <div class="action-content"><h3>Add New Lead</h3><p>Create a new lead entry</p></div>
     </button>
-    <button class=\"action-btn green\" onclick=\"location.href='leads.html'\">
-      <div class=\"action-icon\"><i class=\"fas fa-list\"></i></div>
-      <div class=\"action-content\"><h3>View Leads</h3><p>Browse & share leads</p></div>
+    <button class="action-btn green" onclick="location.href='leads.html'">
+      <div class="action-icon"><i class="fas fa-list"></i></div>
+      <div class="action-content"><h3>View Leads</h3><p>Browse and share leads</p></div>
     </button>
-    <button class=\"action-btn purple\" onclick=\"location.href='addmeeting.html'\">
-      <div class=\"action-icon\"><i class=\"fas fa-calendar-plus\"></i></div>
-      <div class=\"action-content\"><h3>Add Meeting</h3><p>Log a new meeting</p></div>
+    <button class="action-btn purple" onclick="location.href='addmeeting.html'">
+      <div class="action-icon"><i class="fas fa-calendar-plus"></i></div>
+      <div class="action-content"><h3>Add Meeting</h3><p>Log a new meeting</p></div>
     </button>
-    <button class=\"action-btn orange\" onclick=\"location.href='meetings.html'\">
-      <div class=\"action-icon\"><i class=\"fas fa-calendar-check\"></i></div>
-      <div class=\"action-content\"><h3>View Meetings</h3><p>See all meetings</p></div>
+    <button class="action-btn orange" onclick="location.href='meetings.html'">
+      <div class="action-icon"><i class="fas fa-calendar-check"></i></div>
+      <div class="action-content"><h3>View Meetings</h3><p>See all meetings</p></div>
     </button>
-    <button class=\"action-btn red\" onclick=\"location.href='reports.html'\">
-      <div class=\"action-icon\"><i class=\"fas fa-chart-bar\"></i></div>
-      <div class=\"action-content\"><h3>Reports</h3><p>View analytics</p></div>
+    <button class="action-btn red" onclick="location.href='reports.html'">
+      <div class="action-icon"><i class="fas fa-chart-bar"></i></div>
+      <div class="action-content"><h3>Reports</h3><p>View analytics</p></div>
     </button>
-    <button class=\"action-btn dark\" onclick=\"location.href='admin.html'\" id=\"adminBtn\" style=\"display:none;\">
-      <div class=\"action-icon\"><i class=\"fas fa-cog\"></i></div>
-      <div class=\"action-content\"><h3>Admin Panel</h3><p>Manage system</p></div>
+    <button class="action-btn dark" onclick="location.href='admin.html'" id="adminBtn" style="display:none;">
+      <div class="action-icon"><i class="fas fa-cog"></i></div>
+      <div class="action-content"><h3>Admin Panel</h3><p>Manage system</p></div>
     </button>
   </div>
 </div>
 <script>
-const API = \"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec\";
+const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
 
 function checkAuth(){
   const user = localStorage.getItem('user');
-  if(!user){window.location = 'index.html';return false;}
+  if(!user){window.location='index.html';return false;}
   const role = localStorage.getItem('role');
   document.getElementById('userName').textContent = user;
   document.getElementById('userRole').textContent = role;
@@ -134,9 +130,8 @@ async function loadDashboard(){
   if(!checkAuth()) return;
   const user = localStorage.getItem('user');
   const role = localStorage.getItem('role');
-  
   try{
-    const res = await fetch(API + `?action=getDashboard&user=${encodeURIComponent(user)}&role=${encodeURIComponent(role)}`);
+    const res = await fetch(API + '?action=getDashboard&user=' + encodeURIComponent(user) + '&role=' + encodeURIComponent(role));
     const data = await res.json();
     if(data.ok){
       document.getElementById('totalLeads').textContent = data.stats.totalLeads;
