@@ -1,238 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
+"<!DOCTYPE html>
+<html lang=\"en\">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Field CRM - Login</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset=\"UTF-8\">
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+<title>Ratlam Hospital - Login</title>
+<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
+<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-body{
-  font-family:'Inter',sans-serif;
-  background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-.login-container{
-  background:white;
-  border-radius:24px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.3);
-  width:100%;
-  max-width:420px;
-  overflow:hidden;
-}
-.login-header{
-  background:linear-gradient(135deg,#2563eb 0%,#1e40af 100%);
-  padding:40px 30px;
-  text-align:center;
-  color:white;
-}
-.login-header i{
-  font-size:48px;
-  margin-bottom:16px;
-}
-.login-header h1{
-  font-size:28px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-.login-header p{
-  font-size:14px;
-  opacity:0.9;
-}
-.login-body{
-  padding:40px 30px;
-}
-.form-group{
-  margin-bottom:24px;
-}
-.form-group label{
-  display:block;
-  font-size:14px;
-  font-weight:600;
-  color:#374151;
-  margin-bottom:8px;
-}
-.input-wrapper{
-  position:relative;
-}
-.input-wrapper i{
-  position:absolute;
-  left:16px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#9ca3af;
-  font-size:18px;
-}
-select,input{
-  width:100%;
-  padding:14px 16px 14px 48px;
-  border:2px solid #e5e7eb;
-  border-radius:12px;
-  font-size:16px;
-  font-family:'Inter',sans-serif;
-  transition:all 0.3s;
-  background:white;
-}
-select:focus,input:focus{
-  outline:none;
-  border-color:#2563eb;
-  box-shadow:0 0 0 4px rgba(37,99,235,0.1);
-}
-button{
-  width:100%;
-  padding:16px;
-  background:linear-gradient(135deg,#2563eb 0%,#1e40af 100%);
-  color:white;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-  transition:transform 0.2s,box-shadow 0.2s;
-  margin-top:8px;
-}
-button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(37,99,235,0.4);
-}
-button:active{
-  transform:translateY(0);
-}
-.message{
-  margin-top:20px;
-  padding:12px;
-  border-radius:8px;
-  text-align:center;
-  font-weight:500;
-  font-size:14px;
-  display:none;
-}
-.message.success{
-  background:#d1fae5;
-  color:#065f46;
-  display:block;
-}
-.message.error{
-  background:#fee2e2;
-  color:#991b1b;
-  display:block;
-}
-.loading{
-  display:none;
-  text-align:center;
-  margin-top:16px;
-}
-.loading.active{
-  display:block;
-}
-.spinner{
-  border:3px solid #e5e7eb;
-  border-top:3px solid #2563eb;
-  border-radius:50%;
-  width:32px;
-  height:32px;
-  animation:spin 0.8s linear infinite;
-  margin:0 auto;
-}
-@keyframes spin{
-  to{transform:rotate(360deg);}
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.login-container{background:white;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.3);width:100%;max-width:420px;overflow:hidden;}
+.login-header{background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);padding:40px 30px;text-align:center;color:white;}
+.login-header i{font-size:48px;margin-bottom:16px;}
+.login-header h1{font-size:28px;font-weight:700;margin-bottom:8px;}
+.login-header p{font-size:14px;opacity:0.9;}
+.login-body{padding:40px 30px;}
+.form-group{margin-bottom:24px;}
+.form-group label{display:block;font-size:14px;font-weight:600;color:#374151;margin-bottom:8px;}
+.input-wrapper{position:relative;}
+.input-wrapper i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:18px;}
+select,input{width:100%;padding:14px 16px 14px 48px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;font-family:'Inter',sans-serif;transition:all 0.3s;background:white;}
+select:focus,input:focus{outline:none;border-color:#0ea5e9;box-shadow:0 0 0 4px rgba(14,165,233,0.1);}
+button{width:100%;padding:16px;background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:white;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-top:8px;}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(14,165,233,0.4);}
+button:disabled{opacity:0.6;cursor:not-allowed;}
+.message{margin-top:20px;padding:12px;border-radius:8px;text-align:center;font-weight:500;font-size:14px;display:none;}
+.message.success{background:#d1fae5;color:#065f46;display:block;}
+.message.error{background:#fee2e2;color:#991b1b;display:block;}
+.skeleton{height:50px;background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:loading 1.5s infinite;border-radius:12px;}
+@keyframes loading{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 </style>
 </head>
 <body>
-<div class="login-container">
-  <div class="login-header">
-    <i class="fas fa-briefcase"></i>
-    <h1>Field CRM</h1>
-    <p>Sales Management System</p>
+<div class=\"login-container\">
+  <div class=\"login-header\">
+    <i class=\"fas fa-hospital\"></i>
+    <h1>Ratlam Hospital</h1>
+    <p>Sales CRM System</p>
   </div>
-  <div class="login-body">
-    <form onsubmit="login(event)">
-      <div class="form-group">
+  <div class=\"login-body\">
+    <form onsubmit=\"login(event)\">
+      <div class=\"form-group\">
         <label>Select User</label>
-        <div class="input-wrapper">
-          <i class="fas fa-user"></i>
-          <select id="name" required>
-            <option value="">Loading users...</option>
+        <div class=\"input-wrapper\" id=\"userWrapper\">
+          <i class=\"fas fa-user\"></i>
+          <select id=\"name\" required>
+            <option value=\"\">Loading...</option>
           </select>
         </div>
       </div>
-      <div class="form-group">
+      <div class=\"form-group\">
         <label>PIN</label>
-        <div class="input-wrapper">
-          <i class="fas fa-lock"></i>
-          <input id="pin" type="password" placeholder="Enter your PIN" required maxlength="6">
+        <div class=\"input-wrapper\">
+          <i class=\"fas fa-lock\"></i>
+          <input id=\"pin\" type=\"password\" placeholder=\"Enter your PIN\" required maxlength=\"6\" autocomplete=\"off\">
         </div>
       </div>
-      <button type="submit" id="loginBtn">
-        <i class="fas fa-sign-in-alt"></i> Login
+      <button type=\"submit\" id=\"loginBtn\">
+        <i class=\"fas fa-sign-in-alt\"></i> Login
       </button>
     </form>
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-    </div>
-    <div class="message" id="message"></div>
+    <div class=\"message\" id=\"message\"></div>
   </div>
 </div>
 <script>
-const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+const API = \"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec\";
+const CACHE_KEY = 'rh_users_cache';
+const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
+
+function loadUsersFromCache(){
+  try{
+    const cached = localStorage.getItem(CACHE_KEY);
+    if(cached){
+      const data = JSON.parse(cached);
+      if(Date.now() - data.timestamp < CACHE_DURATION){
+        populateUsers(data.users);
+        return true;
+      }
+    }
+  }catch(e){}
+  return false;
+}
+
+function populateUsers(users){
+  const dropdown = document.getElementById(\"name\");
+  dropdown.innerHTML = '<option value=\"\">-- Select User --</option>';
+  users.forEach(u => {
+    dropdown.innerHTML += `<option value=\"${u.name}\">${u.name} (${u.role})</option>`;
+  });
+}
 
 async function loadUsers(){
+  const cacheHit = loadUsersFromCache();
+  
   try{
-    const res = await fetch(API + "?action=getUsers");
+    const res = await fetch(API + \"?action=getUsers\");
     const data = await res.json();
-    const dropdown = document.getElementById("name");
-    dropdown.innerHTML = '<option value="">-- Select User --</option>';
-    data.users.forEach(u => {
-      dropdown.innerHTML += `<option value="${u.name}">${u.name} (${u.role})</option>`;
-    });
+    if(data.ok){
+      populateUsers(data.users);
+      localStorage.setItem(CACHE_KEY, JSON.stringify({users: data.users, timestamp: Date.now()}));
+    }
   }catch(e){
-    console.error(e);
-    showMessage('Failed to load users','error');
+    if(!cacheHit){
+      document.getElementById(\"message\").textContent = 'Failed to load users. Check internet.';
+      document.getElementById(\"message\").className = 'message error';
+    }
   }
 }
 
 async function login(e){
   e.preventDefault();
-  const name = document.getElementById("name").value;
-  const pin = document.getElementById("pin").value;
+  const name = document.getElementById(\"name\").value;
+  const pin = document.getElementById(\"pin\").value;
+  const btn = document.getElementById(\"loginBtn\");
   
   if(!name || !pin){
     showMessage('Please fill all fields','error');
     return;
   }
   
-  showLoading(true);
+  btn.disabled = true;
+  btn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Logging in...';
   
   try{
     const res = await fetch(API + `?action=login&name=${encodeURIComponent(name)}&pin=${encodeURIComponent(pin)}`);
     const data = await res.json();
     
-    showLoading(false);
-    
     if(data.ok){
-      showMessage('Login successful! Redirecting...','success');
+      showMessage('Login successful!','success');
       localStorage.setItem('user',data.user);
       localStorage.setItem('role',data.role);
-      setTimeout(() => {
-        window.location = 'dashboard.html';
-      },1000);
+      setTimeout(() => window.location = 'dashboard.html', 500);
     }else{
       showMessage(data.message || 'Invalid credentials','error');
+      btn.disabled = false;
+      btn.innerHTML = '<i class=\"fas fa-sign-in-alt\"></i> Login';
     }
   }catch(e){
-    showLoading(false);
-    console.error(e);
-    showMessage('Server error. Please try again.','error');
+    showMessage('Server error. Try again.','error');
+    btn.disabled = false;
+    btn.innerHTML = '<i class=\"fas fa-sign-in-alt\"></i> Login';
   }
 }
 
@@ -242,12 +149,8 @@ function showMessage(msg,type){
   el.className = 'message ' + type;
 }
 
-function showLoading(show){
-  document.getElementById('loading').className = show ? 'loading active' : 'loading';
-  document.getElementById('loginBtn').disabled = show;
-}
-
 window.onload = loadUsers;
 </script>
 </body>
 </html>
+"
