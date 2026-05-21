@@ -3,274 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel - Field CRM</title>
+<title>Admin Panel - Ratlam Hospital CRM</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-body{
-  font-family:'Inter',sans-serif;
-  background:#f3f4f6;
-  min-height:100vh;
-}
-.navbar{
-  background:linear-gradient(135deg,#1f2937 0%,#111827 100%);
-  color:white;
-  padding:20px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-.navbar-brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:24px;
-  font-weight:700;
-  cursor:pointer;
-}
-.btn-back{
-  padding:10px 20px;
-  background:rgba(255,255,255,0.2);
-  border:2px solid white;
-  color:white;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
-  transition:all 0.3s;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-.btn-back:hover{
-  background:white;
-  color:#1f2937;
-}
-.container{
-  max-width:1200px;
-  margin:0 auto;
-  padding:32px 20px;
-}
-.page-header{
-  margin-bottom:32px;
-}
-.page-header h1{
-  font-size:32px;
-  color:#111827;
-  margin-bottom:8px;
-}
-.page-header p{
-  color:#6b7280;
-}
-.tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:32px;
-  border-bottom:2px solid #e5e7eb;
-}
-.tab{
-  padding:12px 24px;
-  background:none;
-  border:none;
-  color:#6b7280;
-  font-weight:600;
-  cursor:pointer;
-  border-bottom:3px solid transparent;
-  transition:all 0.3s;
-  font-size:15px;
-}
-.tab.active{
-  color:#1f2937;
-  border-bottom-color:#1f2937;
-}
-.tab-content{
-  display:none;
-}
-.tab-content.active{
-  display:block;
-}
-.section-card{
-  background:white;
-  border-radius:16px;
-  padding:32px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom:24px;
-}
-.section-card h2{
-  font-size:20px;
-  color:#111827;
-  margin-bottom:20px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.form-row{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:16px;
-  margin-bottom:16px;
-}
-.form-group{
-  margin-bottom:16px;
-}
-.form-group label{
-  display:block;
-  font-size:14px;
-  font-weight:600;
-  color:#374151;
-  margin-bottom:8px;
-}
-input,select{
-  width:100%;
-  padding:12px 16px;
-  border:2px solid #e5e7eb;
-  border-radius:10px;
-  font-size:14px;
-  font-family:'Inter',sans-serif;
-  transition:all 0.3s;
-}
-input:focus,select:focus{
-  outline:none;
-  border-color:#1f2937;
-  box-shadow:0 0 0 4px rgba(31,41,55,0.1);
-}
-.btn{
-  padding:12px 24px;
-  border:none;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all 0.3s;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:14px;
-}
-.btn-primary{
-  background:linear-gradient(135deg,#1f2937,#111827);
-  color:white;
-}
-.btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(31,41,55,0.4);
-}
-.btn-danger{
-  background:#ef4444;
-  color:white;
-}
-.btn-danger:hover{
-  background:#dc2626;
-}
-.btn-success{
-  background:#10b981;
-  color:white;
-}
-.btn-success:hover{
-  background:#059669;
-}
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:20px;
-}
-thead{
-  background:#f9fafb;
-}
-thead th{
-  padding:12px;
-  text-align:left;
-  font-size:13px;
-  font-weight:600;
-  color:#374151;
-  border-bottom:2px solid #e5e7eb;
-}
-tbody td{
-  padding:12px;
-  border-bottom:1px solid #f3f4f6;
-  font-size:14px;
-  color:#111827;
-}
-tbody tr:hover{
-  background:#f9fafb;
-}
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:6px;
-  font-size:12px;
-  font-weight:600;
-}
-.badge-active{
-  background:#d1fae5;
-  color:#065f46;
-}
-.badge-inactive{
-  background:#fee2e2;
-  color:#991b1b;
-}
-.config-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px;
-  background:#f9fafb;
-  border-radius:10px;
-  margin-bottom:12px;
-}
-.config-item strong{
-  color:#111827;
-}
-.config-item button{
-  padding:6px 16px;
-}
-.message{
-  padding:16px;
-  border-radius:10px;
-  margin-top:20px;
-  font-weight:500;
-  display:none;
-}
-.message.success{
-  background:#d1fae5;
-  color:#065f46;
-  display:block;
-}
-.message.error{
-  background:#fee2e2;
-  color:#991b1b;
-  display:block;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;background:#f3f4f6;min-height:100vh;}
+.navbar{background:linear-gradient(135deg,#1f2937 0%,#111827 100%);color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;}
+.navbar-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;cursor:pointer;}
+.btn-back{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-back:hover{background:white;color:#1f2937;}
+.container{max-width:1300px;margin:0 auto;padding:32px 20px;}
+.page-header{margin-bottom:32px;}
+.page-header h1{font-size:32px;color:#111827;margin-bottom:8px;}
+.page-header p{color:#6b7280;}
+.tabs{display:flex;gap:8px;margin-bottom:24px;border-bottom:2px solid #e5e7eb;overflow-x:auto;}
+.tab{padding:12px 20px;background:none;border:none;color:#6b7280;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;font-size:14px;white-space:nowrap;font-family:inherit;}
+.tab.active{color:#1f2937;border-bottom-color:#1f2937;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+.section-card{background:white;border-radius:16px;padding:28px;box-shadow:0 4px 12px rgba(0,0,0,0.08);margin-bottom:20px;}
+.section-card h2{font-size:18px;color:#111827;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.section-card .hint{color:#6b7280;font-size:13px;margin-bottom:16px;}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:12px;align-items:end;}
+.form-group{margin-bottom:12px;}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;}
+input,select,textarea{width:100%;padding:10px 12px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#1f2937;}
+.btn{padding:10px 18px;border:none;border-radius:8px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:13px;text-decoration:none;font-family:inherit;}
+.btn-primary{background:linear-gradient(135deg,#1f2937,#111827);color:white;}
+.btn-primary:hover{transform:translateY(-1px);}
+.btn-danger{background:#ef4444;color:white;}
+.btn-success{background:#10b981;color:white;}
+.btn-blue{background:#0ea5e9;color:white;}
+.btn-sm{padding:6px 12px;font-size:12px;}
+table{width:100%;border-collapse:collapse;margin-top:12px;}
+thead{background:#f9fafb;}
+thead th{padding:10px;text-align:left;font-size:12px;font-weight:600;color:#374151;border-bottom:2px solid #e5e7eb;}
+tbody td{padding:10px;border-bottom:1px solid #f3f4f6;font-size:13px;color:#111827;}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.badge-active{background:#d1fae5;color:#065f46;}
+.badge-inactive{background:#fee2e2;color:#991b1b;}
+.config-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#f9fafb;border-radius:8px;margin-bottom:8px;font-size:14px;}
+.message{padding:12px;border-radius:8px;margin-top:12px;font-weight:500;display:none;font-size:13px;}
+.message.success{background:#d1fae5;color:#065f46;display:block;}
+.message.error{background:#fee2e2;color:#991b1b;display:block;}
+.field-builder{background:#f9fafb;padding:16px;border-radius:10px;margin-bottom:12px;border:2px solid #e5e7eb;}
+.field-builder-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.field-builder-title{font-weight:600;color:#111827;display:flex;align-items:center;gap:8px;}
+.field-builder-actions{display:flex;gap:6px;}
+.field-row{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:8px;align-items:center;}
+.field-options{margin-top:8px;display:none;}
+.field-options.show{display:block;}
+.field-options textarea{min-height:60px;font-size:13px;}
+.required-toggle{display:flex;align-items:center;gap:6px;font-size:12px;}
+.log-row{padding:12px;background:#f9fafb;border-radius:8px;margin-bottom:8px;font-size:13px;}
+.log-header{display:flex;justify-content:space-between;margin-bottom:6px;}
+.log-user{font-weight:600;color:#1f2937;}
+.log-time{color:#6b7280;font-size:12px;}
+.log-action{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-right:8px;}
+.action-CREATE{background:#d1fae5;color:#065f46;}
+.action-UPDATE{background:#fef3c7;color:#92400e;}
+.action-TOGGLE,.action-LOGIN{background:#dbeafe;color:#1e40af;}
+.log-desc{color:#374151;}
+.share-fields-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.share-field-chip{padding:6px 12px;background:#dbeafe;color:#1e40af;border-radius:20px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;}
+.share-field-chip .remove{cursor:pointer;color:#991b1b;}
 </style>
 </head>
 <body>
 <div class="navbar">
-  <div class="navbar-brand" onclick="location.href='dashboard.html'">
-    <i class="fas fa-briefcase"></i>
-    <span>Field CRM - Admin</span>
-  </div>
-  <a href="dashboard.html" class="btn-back">
-    <i class="fas fa-arrow-left"></i> Back
-  </a>
+  <div class="navbar-brand" onclick="location.href='dashboard.html'"><i class="fas fa-hospital"></i><span>Ratlam Hospital - Admin</span></div>
+  <a href="dashboard.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back</a>
 </div>
 <div class="container">
   <div class="page-header">
     <h1><i class="fas fa-cog"></i> Admin Panel</h1>
-    <p>Manage users, roles, and system configuration</p>
+    <p>Manage users, forms, and system configuration</p>
   </div>
-  
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('users')">
-      <i class="fas fa-users"></i> Users
-    </button>
-    <button class="tab" onclick="switchTab('config')">
-      <i class="fas fa-sliders-h"></i> Configuration
-    </button>
+    <button class="tab active" onclick="switchTab('users', this)"><i class="fas fa-users"></i> Users</button>
+    <button class="tab" onclick="switchTab('formBuilder', this)"><i class="fas fa-pen-ruler"></i> Form Builder</button>
+    <button class="tab" onclick="switchTab('share', this)"><i class="fas fa-share-alt"></i> Share Settings</button>
+    <button class="tab" onclick="switchTab('config', this)"><i class="fas fa-sliders-h"></i> Dropdowns</button>
+    <button class="tab" onclick="switchTab('logs', this)"><i class="fas fa-history"></i> Activity Logs</button>
   </div>
   
   <div id="usersTab" class="tab-content active">
@@ -278,104 +94,127 @@ tbody tr:hover{
       <h2><i class="fas fa-user-plus"></i> Add New User</h2>
       <form onsubmit="addUser(event)">
         <div class="form-row">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="userName" required placeholder="Enter name">
-          </div>
-          <div class="form-group">
-            <label>PIN (4-6 digits)</label>
-            <input type="text" id="userPin" required pattern="[0-9]{4,6}" placeholder="1234">
-          </div>
-          <div class="form-group">
-            <label>Role</label>
-            <select id="userRole" required>
-              <option value="Rep">Rep</option>
-              <option value="Manager">Manager</option>
-              <option value="Admin">Admin</option>
-            </select>
-          </div>
+          <div class="form-group"><label>Name</label><input type="text" id="userName" required></div>
+          <div class="form-group"><label>PIN (4-6 digits)</label><input type="text" id="userPin" required pattern="[0-9]{4,6}"></div>
+          <div class="form-group"><label>Role</label><select id="userRole" required><option value="Rep">Rep</option><option value="Manager">Manager</option><option value="Admin">Admin</option></select></div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add User</button>
         </div>
-        <button type="submit" class="btn btn-primary">
-          <i class="fas fa-plus"></i> Add User
-        </button>
       </form>
       <div class="message" id="userMessage"></div>
     </div>
-    
     <div class="section-card">
       <h2><i class="fas fa-list"></i> All Users</h2>
       <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>PIN</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="usersTable">
-          <tr>
-            <td colspan="5" style="text-align:center;">Loading...</td>
-          </tr>
-        </tbody>
+        <thead><tr><th>Name</th><th>PIN</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="usersTable"><tr><td colspan="5">Loading...</td></tr></tbody>
       </table>
+    </div>
+  </div>
+  
+  <div id="formBuilderTab" class="tab-content">
+    <div class="section-card">
+      <h2><i class="fas fa-pen-ruler"></i> Form Builder</h2>
+      <p class="hint">Customize Lead and Meeting forms. Changes apply immediately.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Select Form</label>
+          <select id="formSelector" onchange="loadFormSchema()">
+            <option value="leads">Lead Form</option>
+            <option value="meetings">Meeting Form</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Form Title</label><input type="text" id="formTitleInput"></div>
+      <div class="form-group"><label>Form Subtitle</label><input type="text" id="formSubtitleInput"></div>
+      <h3 style="margin:20px 0 12px;font-size:16px;">Fields</h3>
+      <div id="fieldsContainer"></div>
+      <button type="button" class="btn btn-blue" onclick="addNewField()" style="margin-top:12px;"><i class="fas fa-plus"></i> Add Field</button>
+      <button type="button" class="btn btn-primary" onclick="saveFormSchema()" style="margin-top:12px;margin-left:8px;"><i class="fas fa-save"></i> Save Form</button>
+      <div class="message" id="formMessage"></div>
+    </div>
+  </div>
+  
+  <div id="shareTab" class="tab-content">
+    <div class="section-card">
+      <h2><i class="fas fa-share-alt"></i> Lead Share Image Configuration</h2>
+      <p class="hint">Choose fields that appear in lead share image.</p>
+      <div class="form-group">
+        <label>Selected Fields</label>
+        <div class="share-fields-list" id="shareFieldsList"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Add Field</label>
+          <select id="addShareField">
+            <option value="">-- Select --</option>
+            <option value="organisation">Organisation</option>
+            <option value="poc1">Primary Contact</option>
+            <option value="poc2">Secondary Contact</option>
+            <option value="audienceType">Audience Type</option>
+            <option value="status">Status</option>
+            <option value="followup">Followup</option>
+            <option value="owner">Owner</option>
+            <option value="phone">Phone</option>
+            <option value="email">Email</option>
+            <option value="leadId">Lead ID</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-blue" onclick="addShareField()"><i class="fas fa-plus"></i> Add</button>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="saveShareFields()"><i class="fas fa-save"></i> Save Settings</button>
+      <div class="message" id="shareMessage"></div>
     </div>
   </div>
   
   <div id="configTab" class="tab-content">
     <div class="section-card">
       <h2><i class="fas fa-list-ul"></i> Audience Types</h2>
-      <p style="color:#6b7280;margin-bottom:16px;">Manage dropdown options for lead audience types</p>
       <div class="form-row">
-        <div class="form-group" style="flex:3;">
-          <input type="text" id="newAudienceType" placeholder="Enter new audience type">
-        </div>
-        <button class="btn btn-success" onclick="addConfigItem('audienceTypes')" style="margin-top:0;">
-          <i class="fas fa-plus"></i> Add
-        </button>
+        <div class="form-group" style="flex:3;"><input type="text" id="newAudienceType" placeholder="Enter new audience type"></div>
+        <button class="btn btn-success" onclick="addConfigItem('audienceTypes')"><i class="fas fa-plus"></i> Add</button>
       </div>
       <div id="audienceTypesList"></div>
-      <div class="message" id="configMessage1"></div>
     </div>
-    
     <div class="section-card">
       <h2><i class="fas fa-bullseye"></i> Meeting Purposes</h2>
-      <p style="color:#6b7280;margin-bottom:16px;">Manage dropdown options for meeting purposes</p>
       <div class="form-row">
-        <div class="form-group" style="flex:3;">
-          <input type="text" id="newMeetingPurpose" placeholder="Enter new purpose">
-        </div>
-        <button class="btn btn-success" onclick="addConfigItem('meetingPurposes')" style="margin-top:0;">
-          <i class="fas fa-plus"></i> Add
-        </button>
+        <div class="form-group" style="flex:3;"><input type="text" id="newMeetingPurpose" placeholder="Enter new purpose"></div>
+        <button class="btn btn-success" onclick="addConfigItem('meetingPurposes')"><i class="fas fa-plus"></i> Add</button>
       </div>
       <div id="meetingPurposesList"></div>
-      <div class="message" id="configMessage2"></div>
     </div>
-    
     <div class="section-card">
       <h2><i class="fas fa-tags"></i> Lead Status Options</h2>
-      <p style="color:#6b7280;margin-bottom:16px;">Manage status options for leads</p>
       <div class="form-row">
-        <div class="form-group" style="flex:3;">
-          <input type="text" id="newLeadStatus" placeholder="Enter new status">
-        </div>
-        <button class="btn btn-success" onclick="addConfigItem('leadStatuses')" style="margin-top:0;">
-          <i class="fas fa-plus"></i> Add
-        </button>
+        <div class="form-group" style="flex:3;"><input type="text" id="newLeadStatus" placeholder="Enter new status"></div>
+        <button class="btn btn-success" onclick="addConfigItem('leadStatuses')"><i class="fas fa-plus"></i> Add</button>
       </div>
       <div id="leadStatusesList"></div>
-      <div class="message" id="configMessage3"></div>
+    </div>
+  </div>
+  
+  <div id="logsTab" class="tab-content">
+    <div class="section-card">
+      <h2><i class="fas fa-history"></i> Activity Logs</h2>
+      <p class="hint">Last 100 activities. All edits are logged automatically.</p>
+      <button class="btn btn-blue btn-sm" onclick="loadAuditLogs()" style="margin-bottom:16px;"><i class="fas fa-sync"></i> Refresh</button>
+      <div id="logsContainer">Loading...</div>
     </div>
   </div>
 </div>
 <script>
 const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+let currentFormSchema = null;
+let currentShareFields = [];
+
+const FIELD_LABELS_ADMIN = {
+  organisation:'Organisation',poc1:'Primary Contact',poc2:'Secondary Contact',
+  audienceType:'Audience Type',status:'Status',followup:'Followup',owner:'Owner',
+  phone:'Phone',email:'Email',leadId:'Lead ID'
+};
 
 function checkAuth(){
-  const role = localStorage.getItem('role');
-  if(role !== 'Admin'){
+  if(localStorage.getItem('role') !== 'Admin'){
     alert('Access denied. Admin only.');
     window.location = 'dashboard.html';
     return false;
@@ -383,207 +222,227 @@ function checkAuth(){
   return true;
 }
 
-function switchTab(tab){
+function switchTab(tab, btn){
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  
-  event.target.closest('.tab').classList.add('active');
+  btn.classList.add('active');
   document.getElementById(tab + 'Tab').classList.add('active');
-  
-  if(tab === 'users'){
-    loadUsers();
-  }else{
-    loadConfig();
-  }
+  if(tab === 'users') loadUsers();
+  else if(tab === 'formBuilder') loadFormSchema();
+  else if(tab === 'share') loadShareFields();
+  else if(tab === 'config') loadConfig();
+  else if(tab === 'logs') loadAuditLogs();
 }
 
 async function loadUsers(){
   try{
     const res = await fetch(API + '?action=getAllUsers');
     const data = await res.json();
-    
     if(data.ok){
-      const tbody = document.getElementById('usersTable');
-      tbody.innerHTML = data.users.map(u => `
-        <tr>
-          <td>${u.name}</td>
-          <td>${u.pin}</td>
-          <td>${u.role}</td>
-          <td><span class="badge badge-${u.active ? 'active' : 'inactive'}">${u.active ? 'Active' : 'Inactive'}</span></td>
-          <td>
-            <button class="btn ${u.active ? 'btn-danger' : 'btn-success'}" style="padding:6px 12px;font-size:12px;" onclick="toggleUser('${u.name}',${!u.active})">
-              ${u.active ? 'Deactivate' : 'Activate'}
-            </button>
-          </td>
-        </tr>
-      `).join('');
+      document.getElementById('usersTable').innerHTML = data.users.map(u => '<tr><td>' + u.name + '</td><td>' + u.pin + '</td><td>' + u.role + '</td><td><span class="badge badge-' + (u.active?'active':'inactive') + '">' + (u.active?'Active':'Inactive') + '</span></td><td><button class="btn ' + (u.active?'btn-danger':'btn-success') + ' btn-sm" onclick="toggleUser(\'' + u.name + '\',' + (!u.active) + ')">' + (u.active?'Deactivate':'Activate') + '</button></td></tr>').join('');
     }
-  }catch(e){
-    console.error(e);
-  }
+  }catch(e){console.error(e);}
 }
 
 async function addUser(e){
   e.preventDefault();
-  
   const userData = {
     action: 'addUser',
     name: document.getElementById('userName').value,
     pin: document.getElementById('userPin').value,
-    role: document.getElementById('userRole').value
+    role: document.getElementById('userRole').value,
+    adminUser: localStorage.getItem('user')
   };
-  
   try{
-    const res = await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify(userData)
-    });
+    const res = await fetch(API, {method:'POST', body: JSON.stringify(userData)});
     const data = await res.json();
-    
     if(data.ok){
-      showMessage('userMessage','User added successfully!','success');
+      showMessage('userMessage','User added!','success');
       document.getElementById('userName').value = '';
       document.getElementById('userPin').value = '';
       loadUsers();
-    }else{
-      showMessage('userMessage',data.message || 'Failed to add user','error');
-    }
-  }catch(e){
-    console.error(e);
-    showMessage('userMessage','Server error','error');
-  }
+    } else showMessage('userMessage', data.message || 'Failed','error');
+  }catch(e){showMessage('userMessage','Server error','error');}
 }
 
 async function toggleUser(name, active){
   try{
-    const res = await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify({
-        action: 'toggleUser',
-        name: name,
-        active: active
-      })
-    });
+    await fetch(API, {method:'POST', body: JSON.stringify({action:'toggleUser', name, active})});
+    loadUsers();
+  }catch(e){console.error(e);}
+}
+
+async function loadFormSchema(){
+  const formName = document.getElementById('formSelector').value;
+  try{
+    const res = await fetch(API + '?action=getFormSchema&formName=' + formName);
     const data = await res.json();
-    
     if(data.ok){
-      loadUsers();
+      currentFormSchema = data.schema;
+      document.getElementById('formTitleInput').value = data.schema.title || '';
+      document.getElementById('formSubtitleInput').value = data.schema.subtitle || '';
+      renderFieldsBuilder();
     }
-  }catch(e){
-    console.error(e);
+  }catch(e){console.error(e);}
+}
+
+function renderFieldsBuilder(){
+  if(!currentFormSchema.fields) currentFormSchema.fields = [];
+  document.getElementById('fieldsContainer').innerHTML = currentFormSchema.fields.map((field, idx) => '<div class="field-builder"><div class="field-builder-header"><div class="field-builder-title">Field ' + (idx+1) + '</div><div class="field-builder-actions"><button class="btn btn-sm" onclick="moveField(' + idx + ',-1)" ' + (idx===0?'disabled':'') + '><i class="fas fa-arrow-up"></i></button><button class="btn btn-sm" onclick="moveField(' + idx + ',1)" ' + (idx===currentFormSchema.fields.length-1?'disabled':'') + '><i class="fas fa-arrow-down"></i></button><button class="btn btn-danger btn-sm" onclick="removeField(' + idx + ')"><i class="fas fa-trash"></i></button></div></div><div class="field-row"><div><label style="font-size:12px;color:#6b7280;">Label</label><input type="text" value="' + (field.label || '') + '" onchange="updateField(' + idx + ',\'label\',this.value)"></div><div><label style="font-size:12px;color:#6b7280;">Field ID</label><input type="text" value="' + (field.id || '') + '" onchange="updateField(' + idx + ',\'id\',this.value)"></div><div><label style="font-size:12px;color:#6b7280;">Type</label><select onchange="updateFieldType(' + idx + ',this.value)"><option value="text" ' + (field.type==='text'?'selected':'') + '>Text</option><option value="number" ' + (field.type==='number'?'selected':'') + '>Number Only</option><option value="phone" ' + (field.type==='phone'?'selected':'') + '>Phone (10 digits)</option><option value="email" ' + (field.type==='email'?'selected':'') + '>Email</option><option value="date" ' + (field.type==='date'?'selected':'') + '>Date</option><option value="textarea" ' + (field.type==='textarea'?'selected':'') + '>Long Text</option><option value="dropdown" ' + (field.type==='dropdown'?'selected':'') + '>Dropdown</option><option value="leadSelect" ' + (field.type==='leadSelect'?'selected':'') + '>Lead Selector</option></select></div><div class="required-toggle"><input type="checkbox" id="req_' + idx + '" ' + (field.required?'checked':'') + ' onchange="updateField(' + idx + ',\'required\',this.checked)"><label for="req_' + idx + '">Required</label></div></div><div class="field-options ' + (field.type==='dropdown'?'show':'') + '" id="opts_' + idx + '"><label style="font-size:12px;color:#6b7280;margin-top:8px;display:block;">Dropdown Options (one per line)</label><textarea onchange="updateFieldOptions(' + idx + ',this.value)">' + ((field.options || []).join('\n')) + '</textarea></div><div style="margin-top:8px;"><label style="font-size:12px;color:#6b7280;">Placeholder</label><input type="text" value="' + (field.placeholder || '') + '" onchange="updateField(' + idx + ',\'placeholder\',this.value)"></div></div>').join('');
+}
+
+function updateField(idx, key, value){currentFormSchema.fields[idx][key] = value;}
+function updateFieldType(idx, type){
+  currentFormSchema.fields[idx].type = type;
+  document.getElementById('opts_'+idx).className = 'field-options ' + (type==='dropdown'?'show':'');
+}
+function updateFieldOptions(idx, value){
+  currentFormSchema.fields[idx].options = value.split('\n').map(s=>s.trim()).filter(Boolean);
+}
+
+function moveField(idx, dir){
+  const newIdx = idx + dir;
+  if(newIdx < 0 || newIdx >= currentFormSchema.fields.length) return;
+  const temp = currentFormSchema.fields[idx];
+  currentFormSchema.fields[idx] = currentFormSchema.fields[newIdx];
+  currentFormSchema.fields[newIdx] = temp;
+  renderFieldsBuilder();
+}
+
+function removeField(idx){
+  if(!confirm('Remove this field?')) return;
+  currentFormSchema.fields.splice(idx, 1);
+  renderFieldsBuilder();
+}
+
+function addNewField(){
+  if(!currentFormSchema.fields) currentFormSchema.fields = [];
+  currentFormSchema.fields.push({
+    id: 'field_' + (currentFormSchema.fields.length + 1),
+    label: 'New Field', type: 'text', required: false, placeholder: ''
+  });
+  renderFieldsBuilder();
+}
+
+async function saveFormSchema(){
+  const formName = document.getElementById('formSelector').value;
+  currentFormSchema.title = document.getElementById('formTitleInput').value;
+  currentFormSchema.subtitle = document.getElementById('formSubtitleInput').value;
+  const ids = currentFormSchema.fields.map(f => f.id);
+  if(new Set(ids).size !== ids.length){
+    showMessage('formMessage','Duplicate field IDs found','error');
+    return;
   }
+  try{
+    const res = await fetch(API, {method:'POST', body: JSON.stringify({
+      action:'saveFormSchema', formName, schema: currentFormSchema, user: localStorage.getItem('user')
+    })});
+    const data = await res.json();
+    if(data.ok) showMessage('formMessage','Form saved! Changes are live.','success');
+  }catch(e){showMessage('formMessage','Server error','error');}
+}
+
+async function loadShareFields(){
+  try{
+    const res = await fetch(API + '?action=getFormSchema&formName=shareFields');
+    const data = await res.json();
+    if(data.ok && data.schema.fields) currentShareFields = data.schema.fields;
+    else currentShareFields = ['organisation','poc1','poc2','audienceType','status','followup','owner'];
+    renderShareFields();
+  }catch(e){console.error(e);}
+}
+
+function renderShareFields(){
+  document.getElementById('shareFieldsList').innerHTML = currentShareFields.map((f, idx) => '<div class="share-field-chip">' + (FIELD_LABELS_ADMIN[f] || f) + ' <span class="remove" onclick="removeShareField(' + idx + ')"><i class="fas fa-times"></i></span></div>').join('') || '<p style="color:#9ca3af;">No fields selected</p>';
+}
+
+function addShareField(){
+  const val = document.getElementById('addShareField').value;
+  if(!val) return;
+  if(currentShareFields.includes(val)){showMessage('shareMessage','Already added','error');return;}
+  currentShareFields.push(val);
+  document.getElementById('addShareField').value = '';
+  renderShareFields();
+}
+
+function removeShareField(idx){
+  currentShareFields.splice(idx, 1);
+  renderShareFields();
+}
+
+async function saveShareFields(){
+  try{
+    const res = await fetch(API, {method:'POST', body: JSON.stringify({
+      action:'saveShareFields', fields: currentShareFields, user: localStorage.getItem('user')
+    })});
+    const data = await res.json();
+    if(data.ok) showMessage('shareMessage','Settings saved!','success');
+  }catch(e){showMessage('shareMessage','Server error','error');}
 }
 
 async function loadConfig(){
   try{
     const res = await fetch(API + '?action=getConfig');
     const data = await res.json();
-    
     if(data.ok){
       renderConfigList('audienceTypesList', data.config.audienceTypes || [], 'audienceTypes');
       renderConfigList('meetingPurposesList', data.config.meetingPurposes || [], 'meetingPurposes');
       renderConfigList('leadStatusesList', data.config.leadStatuses || [], 'leadStatuses');
     }
-  }catch(e){
-    console.error(e);
-  }
+  }catch(e){console.error(e);}
 }
 
-function renderConfigList(containerId, items, configKey){
-  const container = document.getElementById(containerId);
-  if(items.length === 0){
-    container.innerHTML = '<p style="color:#9ca3af;margin-top:12px;">No items yet</p>';
-    return;
-  }
-  container.innerHTML = items.map(item => `
-    <div class="config-item">
-      <strong>${item}</strong>
-      <button class="btn btn-danger" onclick="removeConfigItem('${configKey}','${item}')">
-        <i class="fas fa-trash"></i>
-      </button>
-    </div>
-  `).join('');
+function renderConfigList(id, items, key){
+  const c = document.getElementById(id);
+  if(items.length === 0){c.innerHTML = '<p style="color:#9ca3af;">No items yet</p>';return;}
+  c.innerHTML = items.map(item => '<div class="config-item"><strong>' + item + '</strong><button class="btn btn-danger btn-sm" onclick="removeConfigItem(\'' + key + '\',\'' + item + '\')"><i class="fas fa-trash"></i></button></div>').join('');
 }
 
-async function addConfigItem(configKey){
-  let inputId, messageId;
-  if(configKey === 'audienceTypes'){
-    inputId = 'newAudienceType';
-    messageId = 'configMessage1';
-  }else if(configKey === 'meetingPurposes'){
-    inputId = 'newMeetingPurpose';
-    messageId = 'configMessage2';
-  }else{
-    inputId = 'newLeadStatus';
-    messageId = 'configMessage3';
-  }
-  
+async function addConfigItem(key){
+  let inputId = key === 'audienceTypes' ? 'newAudienceType' : key === 'meetingPurposes' ? 'newMeetingPurpose' : 'newLeadStatus';
   const value = document.getElementById(inputId).value.trim();
-  if(!value){
-    showMessage(messageId,'Please enter a value','error');
-    return;
-  }
-  
+  if(!value) return;
   try{
-    const res = await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify({
-        action: 'addConfigItem',
-        configKey: configKey,
-        value: value
-      })
-    });
+    const res = await fetch(API, {method:'POST', body: JSON.stringify({action:'addConfigItem', configKey: key, value})});
     const data = await res.json();
-    
     if(data.ok){
-      showMessage(messageId,'Added successfully!','success');
       document.getElementById(inputId).value = '';
       loadConfig();
-    }else{
-      showMessage(messageId,data.message || 'Failed to add','error');
     }
-  }catch(e){
-    console.error(e);
-    showMessage(messageId,'Server error','error');
-  }
+  }catch(e){console.error(e);}
 }
 
-async function removeConfigItem(configKey, value){
-  if(!confirm(`Remove "${value}"?`)) return;
-  
+async function removeConfigItem(key, value){
+  if(!confirm('Remove?')) return;
   try{
-    const res = await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify({
-        action: 'removeConfigItem',
-        configKey: configKey,
-        value: value
-      })
-    });
+    await fetch(API, {method:'POST', body: JSON.stringify({action:'removeConfigItem', configKey: key, value})});
+    loadConfig();
+  }catch(e){console.error(e);}
+}
+
+async function loadAuditLogs(){
+  document.getElementById('logsContainer').innerHTML = 'Loading...';
+  try{
+    const res = await fetch(API + '?action=getAuditLogs&limit=100');
     const data = await res.json();
-    
     if(data.ok){
-      loadConfig();
+      if(data.logs.length === 0){
+        document.getElementById('logsContainer').innerHTML = '<p style="color:#9ca3af;">No activity logs yet</p>';
+        return;
+      }
+      document.getElementById('logsContainer').innerHTML = data.logs.map(log => '<div class="log-row"><div class="log-header"><span class="log-user"><i class="fas fa-user"></i> ' + log.user + '</span><span class="log-time">' + new Date(log.timestamp).toLocaleString() + '</span></div><div><span class="log-action action-' + log.action + '">' + log.action + '</span><span class="log-desc"><strong>' + log.entity + '</strong> ' + (log.entityId ? '#' + log.entityId : '') + ' - ' + log.description + '</span></div></div>').join('');
     }
-  }catch(e){
-    console.error(e);
-  }
+  }catch(e){document.getElementById('logsContainer').innerHTML = '<p style="color:#ef4444;">Failed to load</p>';}
 }
 
 function showMessage(id, msg, type){
   const el = document.getElementById(id);
   el.textContent = msg;
   el.className = 'message ' + type;
-  setTimeout(() => {
-    el.className = 'message';
-  }, 3000);
+  setTimeout(() => el.className = 'message', 4000);
 }
 
-window.onload = () => {
-  if(checkAuth()){
-    loadUsers();
-  }
-};
+window.onload = () => {if(checkAuth()) loadUsers();};
 </script>
 </body>
 </html>
