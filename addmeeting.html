@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang=\"en\">
+<html lang="en">
 <head>
-<meta charset=\"UTF-8\">
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add Meeting - Ratlam Hospital CRM</title>
-<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
-<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
+body{font-family:'Inter',system-ui,sans-serif;background:#f3f4f6;min-height:100vh;}
 .navbar{background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;}
 .navbar-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;cursor:pointer;}
-.btn-back{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;cursor:pointer;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-back{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
 .btn-back:hover{background:white;color:#8b5cf6;}
 .container{max-width:800px;margin:0 auto;padding:32px 20px;}
 .form-card{background:white;border-radius:16px;padding:32px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
@@ -22,17 +22,17 @@ body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
 .gps-icon{width:48px;height:48px;border-radius:12px;background:white;display:flex;align-items:center;justify-content:center;font-size:20px;color:#8b5cf6;}
 .gps-info h3{font-size:16px;color:#111827;margin-bottom:4px;}
 .gps-info p{font-size:13px;color:#6b7280;}
-.btn-gps{width:100%;padding:12px;background:white;color:#8b5cf6;border:2px solid #8b5cf6;border-radius:10px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-gps{width:100%;padding:12px;background:white;color:#8b5cf6;border:2px solid #8b5cf6;border-radius:10px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;}
 .btn-gps:hover{background:#8b5cf6;color:white;}
 .btn-gps.active{background:#10b981;border-color:#10b981;color:white;}
 .required{color:#ef4444;}
 .form-group{margin-bottom:20px;}
 .form-group label{display:block;font-size:14px;font-weight:600;color:#374151;margin-bottom:8px;}
-input,select,textarea{width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;}
+input,select,textarea{width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:15px;font-family:inherit;}
 input:focus,select:focus,textarea:focus{outline:none;border-color:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92,246,0.1);}
 textarea{resize:vertical;min-height:100px;}
 .form-actions{display:flex;gap:16px;margin-top:32px;}
-.btn{padding:14px 32px;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
+.btn{padding:14px 32px;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:inherit;}
 .btn-primary{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white;flex:1;}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(139,92,246,0.4);}
 .btn-primary:disabled{opacity:0.6;cursor:not-allowed;}
@@ -46,50 +46,39 @@ textarea{resize:vertical;min-height:100px;}
 </style>
 </head>
 <body>
-<div class=\"navbar\">
-  <div class=\"navbar-brand\" onclick=\"location.href='dashboard.html'\"><i class=\"fas fa-hospital\"></i><span>Ratlam Hospital</span></div>
-  <a href=\"meetings.html\" class=\"btn-back\"><i class=\"fas fa-arrow-left\"></i> Back to Meetings</a>
+<div class="navbar">
+  <div class="navbar-brand" onclick="location.href='dashboard.html'"><i class="fas fa-hospital"></i><span>Ratlam Hospital</span></div>
+  <a href="meetings.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Meetings</a>
 </div>
-<div class=\"container\">
-  <div class=\"form-card\">
-    <h1 id=\"formTitle\"><i class=\"fas fa-calendar-plus\"></i> Add New Meeting</h1>
-    <p id=\"formSubtitle\">Log your meeting details and capture location</p>
-    
-    <div class=\"gps-section\">
-      <div class=\"gps-status\">
-        <div class=\"gps-icon\"><i class=\"fas fa-map-marker-alt\"></i></div>
-        <div class=\"gps-info\">
-          <h3>GPS Location <span class=\"required\">*</span></h3>
-          <p id=\"gpsStatus\">Required - Please capture your location</p>
+<div class="container">
+  <div class="form-card">
+    <h1 id="formTitle"><i class="fas fa-calendar-plus"></i> Add New Meeting</h1>
+    <p id="formSubtitle">Log your meeting details and capture location</p>
+    <div class="gps-section">
+      <div class="gps-status">
+        <div class="gps-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="gps-info">
+          <h3>GPS Location <span class="required">*</span></h3>
+          <p id="gpsStatus">Required - Please capture your location</p>
         </div>
       </div>
-      <button type=\"button\" class=\"btn-gps\" id=\"gpsBtn\" onclick=\"captureGPS()\">
-        <i class=\"fas fa-crosshairs\"></i> Capture Current Location
-      </button>
+      <button type="button" class="btn-gps" id="gpsBtn" onclick="captureGPS()"><i class="fas fa-crosshairs"></i> Capture Current Location</button>
     </div>
-    
-    <div id=\"formLoading\" class=\"loading\">
-      <div class=\"spinner\"></div>
-      <p>Loading form...</p>
-    </div>
-    
-    <form id=\"dynamicForm\" onsubmit=\"saveMeeting(event)\" style=\"display:none;\">
-      <div id=\"formFields\"></div>
-      <input type=\"hidden\" id=\"latitude\">
-      <input type=\"hidden\" id=\"longitude\">
-      <div class=\"form-actions\">
-        <button type=\"submit\" class=\"btn btn-primary\" id=\"saveBtn\">
-          <i class=\"fas fa-save\"></i> Save Meeting
-        </button>
-        <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location.href='meetings.html'\">Cancel</button>
+    <div id="formLoading" class="loading"><div class="spinner"></div><p>Loading form...</p></div>
+    <form id="dynamicForm" onsubmit="saveMeeting(event)" style="display:none;">
+      <div id="formFields"></div>
+      <input type="hidden" id="latitude">
+      <input type="hidden" id="longitude">
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="saveBtn"><i class="fas fa-save"></i> Save Meeting</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='meetings.html'">Cancel</button>
       </div>
     </form>
-    
-    <div class=\"message\" id=\"message\"></div>
+    <div class="message" id="message"></div>
   </div>
 </div>
 <script>
-const API = \"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec\";
+const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
 let formSchema = null;
 let leadsList = [];
 
@@ -100,133 +89,114 @@ function checkAuth(){
 
 async function loadFormSchema(){
   try{
-    // Load schema and leads in parallel
     const [schemaRes, leadsRes] = await Promise.all([
       fetch(API + '?action=getFormSchema&formName=meetings'),
-      fetch(API + `?action=getLeads&user=${encodeURIComponent(localStorage.getItem('user'))}&role=${encodeURIComponent(localStorage.getItem('role'))}`)
+      fetch(API + '?action=getLeads&user=' + encodeURIComponent(localStorage.getItem('user')) + '&role=' + encodeURIComponent(localStorage.getItem('role')))
     ]);
     const schemaData = await schemaRes.json();
     const leadsData = await leadsRes.json();
-    
     if(schemaData.ok){
       formSchema = schemaData.schema;
       leadsList = leadsData.ok ? leadsData.leads.filter(l => !l.archived) : [];
       renderForm();
     }
   }catch(e){
-    document.getElementById('formLoading').innerHTML = '<p style=\"color:#ef4444;\">Failed to load form.</p>';
+    document.getElementById('formLoading').innerHTML = '<p style="color:#ef4444;">Failed to load.</p>';
   }
 }
 
 function renderForm(){
-  document.getElementById('formTitle').innerHTML = '<i class=\"fas fa-calendar-plus\"></i> ' + (formSchema.title || 'Add Meeting');
+  document.getElementById('formTitle').innerHTML = '<i class="fas fa-calendar-plus"></i> ' + (formSchema.title || 'Add Meeting');
   document.getElementById('formSubtitle').textContent = formSchema.subtitle || '';
-  
-  const container = document.getElementById('formFields');
-  container.innerHTML = formSchema.fields.map(field => renderField(field)).join('');
-  
+  document.getElementById('formFields').innerHTML = formSchema.fields.map(f => renderField(f)).join('');
   document.getElementById('formLoading').style.display = 'none';
   document.getElementById('dynamicForm').style.display = 'block';
 }
 
 function renderField(field){
-  const reqMark = field.required ? '<span class=\"required\">*</span>' : '';
+  const reqMark = field.required ? '<span class="required">*</span>' : '';
   const reqAttr = field.required ? 'required' : '';
-  const placeholder = field.placeholder || '';
-  
+  const ph = field.placeholder || '';
   let inputHtml = '';
-  
   if(field.type === 'leadSelect'){
-    const opts = leadsList.map(l => `<option value=\"${l.leadId}\">${l.organisation} (${l.leadId})</option>`).join('');
-    inputHtml = `<select id=\"field_${field.id}\" ${reqAttr}><option value=\"\">-- Select Lead --</option>${opts}</select>`;
+    const opts = leadsList.map(l => '<option value="' + l.leadId + '">' + l.organisation + ' (' + l.leadId + ')</option>').join('');
+    inputHtml = '<select id="field_' + field.id + '" ' + reqAttr + '><option value="">-- Select Lead --</option>' + opts + '</select>';
   } else if(field.type === 'dropdown'){
-    const opts = (field.options || []).map(o => `<option value=\"${o}\">${o}</option>`).join('');
-    inputHtml = `<select id=\"field_${field.id}\" ${reqAttr}><option value=\"\">-- Select --</option>${opts}</select>`;
+    const opts = (field.options || []).map(o => '<option value="' + o + '">' + o + '</option>').join('');
+    inputHtml = '<select id="field_' + field.id + '" ' + reqAttr + '><option value="">-- Select --</option>' + opts + '</select>';
   } else if(field.type === 'textarea'){
-    inputHtml = `<textarea id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\"></textarea>`;
+    inputHtml = '<textarea id="field_' + field.id + '" ' + reqAttr + ' placeholder="' + ph + '"></textarea>';
   } else if(field.type === 'date'){
-    inputHtml = `<input type=\"date\" id=\"field_${field.id}\" ${reqAttr}>`;
+    inputHtml = '<input type="date" id="field_' + field.id + '" ' + reqAttr + '>';
   } else if(field.type === 'number'){
-    inputHtml = `<input type=\"number\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\">`;
+    inputHtml = '<input type="number" id="field_' + field.id + '" ' + reqAttr + ' placeholder="' + ph + '">';
   } else if(field.type === 'phone'){
-    inputHtml = `<input type=\"tel\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\" pattern=\"[0-9]{10}\" maxlength=\"10\">`;
+    inputHtml = '<input type="tel" id="field_' + field.id + '" ' + reqAttr + ' placeholder="' + ph + '" pattern="[0-9]{10}" maxlength="10">';
   } else if(field.type === 'email'){
-    inputHtml = `<input type=\"email\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\">`;
+    inputHtml = '<input type="email" id="field_' + field.id + '" ' + reqAttr + ' placeholder="' + ph + '">';
   } else {
-    inputHtml = `<input type=\"text\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\">`;
+    inputHtml = '<input type="text" id="field_' + field.id + '" ' + reqAttr + ' placeholder="' + ph + '">';
   }
-  
-  return `<div class=\"form-group\"><label>${field.label} ${reqMark}</label>${inputHtml}</div>`;
+  return '<div class="form-group"><label>' + field.label + ' ' + reqMark + '</label>' + inputHtml + '</div>';
 }
 
 function captureGPS(){
-  if(!navigator.geolocation){
-    showMessage('GPS not supported','error');
-    return;
-  }
-  
+  if(!navigator.geolocation){showMessage('GPS not supported','error');return;}
   const btn = document.getElementById('gpsBtn');
   btn.disabled = true;
-  btn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Capturing...';
-  
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Capturing...';
   navigator.geolocation.getCurrentPosition(
-    (position) => {
-      document.getElementById('latitude').value = position.coords.latitude;
-      document.getElementById('longitude').value = position.coords.longitude;
-      document.getElementById('gpsStatus').textContent = `Captured: ${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)}`;
+    (pos) => {
+      document.getElementById('latitude').value = pos.coords.latitude;
+      document.getElementById('longitude').value = pos.coords.longitude;
+      document.getElementById('gpsStatus').textContent = 'Captured: ' + pos.coords.latitude.toFixed(6) + ', ' + pos.coords.longitude.toFixed(6);
       btn.className = 'btn-gps active';
-      btn.innerHTML = '<i class=\"fas fa-check\"></i> Location Captured';
+      btn.innerHTML = '<i class="fas fa-check"></i> Location Captured';
       btn.disabled = false;
     },
-    (error) => {
-      showMessage('GPS denied. Location is MANDATORY for meetings. Please allow location.','error');
-      btn.innerHTML = '<i class=\"fas fa-crosshairs\"></i> Try Again';
+    () => {
+      showMessage('GPS denied. Location is MANDATORY. Please allow location.','error');
+      btn.innerHTML = '<i class="fas fa-crosshairs"></i> Try Again';
       btn.disabled = false;
     },
-    { enableHighAccuracy: true, timeout: 10000 }
+    {enableHighAccuracy: true, timeout: 10000}
   );
 }
 
 async function saveMeeting(e){
   e.preventDefault();
-  
   if(!document.getElementById('latitude').value || !document.getElementById('longitude').value){
-    showMessage('GPS location is MANDATORY. Please capture location first.','error');
+    showMessage('GPS location is MANDATORY. Capture location first.','error');
     return;
   }
-  
   const saveBtn = document.getElementById('saveBtn');
   saveBtn.disabled = true;
-  saveBtn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Saving...';
-  
+  saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
   const meetingData = {
     action: 'addMeeting',
     rep: localStorage.getItem('user'),
     latitude: document.getElementById('latitude').value,
     longitude: document.getElementById('longitude').value
   };
-  
-  formSchema.fields.forEach(field => {
-    const el = document.getElementById('field_' + field.id);
-    if(el) meetingData[field.id] = el.value;
+  formSchema.fields.forEach(f => {
+    const el = document.getElementById('field_' + f.id);
+    if(el) meetingData[f.id] = el.value;
   });
-  
   try{
     const res = await fetch(API, {method:'POST', body: JSON.stringify(meetingData)});
     const data = await res.json();
-    
     if(data.ok){
       showMessage('Meeting saved! Redirecting...','success');
       setTimeout(() => window.location = 'meetings.html', 1200);
-    }else{
+    } else {
       showMessage('Failed to save','error');
       saveBtn.disabled = false;
-      saveBtn.innerHTML = '<i class=\"fas fa-save\"></i> Save Meeting';
+      saveBtn.innerHTML = '<i class="fas fa-save"></i> Save Meeting';
     }
   }catch(e){
     showMessage('Server error','error');
     saveBtn.disabled = false;
-    saveBtn.innerHTML = '<i class=\"fas fa-save\"></i> Save Meeting';
+    saveBtn.innerHTML = '<i class="fas fa-save"></i> Save Meeting';
   }
 }
 
