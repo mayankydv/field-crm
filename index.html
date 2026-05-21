@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang=\"en\">
+<html lang="en">
 <head>
-<meta charset=\"UTF-8\">
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ratlam Hospital - Login</title>
-<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
-<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
 .login-container{background:white;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.3);width:100%;max-width:420px;overflow:hidden;}
 .login-header{background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);padding:40px 30px;text-align:center;color:white;}
 .login-header i{font-size:48px;margin-bottom:16px;}
@@ -19,54 +19,52 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0ea5e9 0%
 .form-group label{display:block;font-size:14px;font-weight:600;color:#374151;margin-bottom:8px;}
 .input-wrapper{position:relative;}
 .input-wrapper i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:18px;}
-select,input{width:100%;padding:14px 16px 14px 48px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;font-family:'Inter',sans-serif;transition:all 0.3s;background:white;}
+select,input{width:100%;padding:14px 16px 14px 48px;border:2px solid #e5e7eb;border-radius:12px;font-size:16px;font-family:inherit;transition:all 0.3s;background:white;}
 select:focus,input:focus{outline:none;border-color:#0ea5e9;box-shadow:0 0 0 4px rgba(14,165,233,0.1);}
-button{width:100%;padding:16px;background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:white;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-top:8px;}
+button{width:100%;padding:16px;background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:white;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;margin-top:8px;}
 button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(14,165,233,0.4);}
 button:disabled{opacity:0.6;cursor:not-allowed;}
 .message{margin-top:20px;padding:12px;border-radius:8px;text-align:center;font-weight:500;font-size:14px;display:none;}
 .message.success{background:#d1fae5;color:#065f46;display:block;}
 .message.error{background:#fee2e2;color:#991b1b;display:block;}
-.skeleton{height:50px;background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:loading 1.5s infinite;border-radius:12px;}
-@keyframes loading{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 </style>
 </head>
 <body>
-<div class=\"login-container\">
-  <div class=\"login-header\">
-    <i class=\"fas fa-hospital\"></i>
+<div class="login-container">
+  <div class="login-header">
+    <i class="fas fa-hospital"></i>
     <h1>Ratlam Hospital</h1>
     <p>Sales CRM System</p>
   </div>
-  <div class=\"login-body\">
-    <form onsubmit=\"login(event)\">
-      <div class=\"form-group\">
+  <div class="login-body">
+    <form onsubmit="login(event)">
+      <div class="form-group">
         <label>Select User</label>
-        <div class=\"input-wrapper\" id=\"userWrapper\">
-          <i class=\"fas fa-user\"></i>
-          <select id=\"name\" required>
-            <option value=\"\">Loading...</option>
+        <div class="input-wrapper">
+          <i class="fas fa-user"></i>
+          <select id="name" required>
+            <option value="">Loading...</option>
           </select>
         </div>
       </div>
-      <div class=\"form-group\">
+      <div class="form-group">
         <label>PIN</label>
-        <div class=\"input-wrapper\">
-          <i class=\"fas fa-lock\"></i>
-          <input id=\"pin\" type=\"password\" placeholder=\"Enter your PIN\" required maxlength=\"6\" autocomplete=\"off\">
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input id="pin" type="password" placeholder="Enter your PIN" required maxlength="6" autocomplete="off">
         </div>
       </div>
-      <button type=\"submit\" id=\"loginBtn\">
-        <i class=\"fas fa-sign-in-alt\"></i> Login
+      <button type="submit" id="loginBtn">
+        <i class="fas fa-sign-in-alt"></i> Login
       </button>
     </form>
-    <div class=\"message\" id=\"message\"></div>
+    <div class="message" id="message"></div>
   </div>
 </div>
 <script>
-const API = \"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec\";
+const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
 const CACHE_KEY = 'rh_users_cache';
-const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
+const CACHE_DURATION = 600000;
 
 function loadUsersFromCache(){
   try{
@@ -83,18 +81,17 @@ function loadUsersFromCache(){
 }
 
 function populateUsers(users){
-  const dropdown = document.getElementById(\"name\");
-  dropdown.innerHTML = '<option value=\"\">-- Select User --</option>';
+  const dropdown = document.getElementById('name');
+  dropdown.innerHTML = '<option value="">-- Select User --</option>';
   users.forEach(u => {
-    dropdown.innerHTML += `<option value=\"${u.name}\">${u.name} (${u.role})</option>`;
+    dropdown.innerHTML += '<option value="' + u.name + '">' + u.name + ' (' + u.role + ')</option>';
   });
 }
 
 async function loadUsers(){
   const cacheHit = loadUsersFromCache();
-  
   try{
-    const res = await fetch(API + \"?action=getUsers\");
+    const res = await fetch(API + '?action=getUsers');
     const data = await res.json();
     if(data.ok){
       populateUsers(data.users);
@@ -102,30 +99,22 @@ async function loadUsers(){
     }
   }catch(e){
     if(!cacheHit){
-      document.getElementById(\"message\").textContent = 'Failed to load users. Check internet.';
-      document.getElementById(\"message\").className = 'message error';
+      showMessage('Failed to load users','error');
     }
   }
 }
 
 async function login(e){
   e.preventDefault();
-  const name = document.getElementById(\"name\").value;
-  const pin = document.getElementById(\"pin\").value;
-  const btn = document.getElementById(\"loginBtn\");
-  
-  if(!name || !pin){
-    showMessage('Please fill all fields','error');
-    return;
-  }
-  
+  const name = document.getElementById('name').value;
+  const pin = document.getElementById('pin').value;
+  const btn = document.getElementById('loginBtn');
+  if(!name || !pin){showMessage('Please fill all fields','error');return;}
   btn.disabled = true;
-  btn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Logging in...';
-  
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
   try{
-    const res = await fetch(API + `?action=login&name=${encodeURIComponent(name)}&pin=${encodeURIComponent(pin)}`);
+    const res = await fetch(API + '?action=login&name=' + encodeURIComponent(name) + '&pin=' + encodeURIComponent(pin));
     const data = await res.json();
-    
     if(data.ok){
       showMessage('Login successful!','success');
       localStorage.setItem('user',data.user);
@@ -134,12 +123,12 @@ async function login(e){
     }else{
       showMessage(data.message || 'Invalid credentials','error');
       btn.disabled = false;
-      btn.innerHTML = '<i class=\"fas fa-sign-in-alt\"></i> Login';
+      btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
     }
   }catch(e){
     showMessage('Server error. Try again.','error');
     btn.disabled = false;
-    btn.innerHTML = '<i class=\"fas fa-sign-in-alt\"></i> Login';
+    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
   }
 }
 
