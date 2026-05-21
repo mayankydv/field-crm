@@ -1,383 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - Field CRM</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset=\"UTF-8\">
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+<title>Dashboard - Ratlam Hospital CRM</title>
+<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
+<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-body{
-  font-family:'Inter',sans-serif;
-  background:#f3f4f6;
-  min-height:100vh;
-}
-.navbar{
-  background:linear-gradient(135deg,#2563eb 0%,#1e40af 100%);
-  color:white;
-  padding:20px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-.navbar-brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:24px;
-  font-weight:700;
-}
-.navbar-user{
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-.user-info{
-  text-align:right;
-}
-.user-info strong{
-  display:block;
-  font-size:16px;
-}
-.user-info span{
-  font-size:13px;
-  opacity:0.9;
-}
-.btn-logout{
-  padding:10px 20px;
-  background:rgba(255,255,255,0.2);
-  border:2px solid white;
-  color:white;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
-  transition:all 0.3s;
-}
-.btn-logout:hover{
-  background:white;
-  color:#2563eb;
-}
-.container{
-  max-width:1400px;
-  margin:0 auto;
-  padding:32px 20px;
-}
-.welcome{
-  margin-bottom:32px;
-}
-.welcome h1{
-  font-size:32px;
-  color:#111827;
-  margin-bottom:8px;
-}
-.welcome p{
-  font-size:16px;
-  color:#6b7280;
-}
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:24px;
-  margin-bottom:40px;
-}
-.stat-card{
-  background:white;
-  border-radius:16px;
-  padding:24px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  transition:transform 0.3s,box-shadow 0.3s;
-}
-.stat-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(0,0,0,0.12);
-}
-.stat-card.blue{
-  border-left:4px solid #2563eb;
-}
-.stat-card.green{
-  border-left:4px solid #10b981;
-}
-.stat-card.purple{
-  border-left:4px solid #8b5cf6;
-}
-.stat-card.orange{
-  border-left:4px solid #f59e0b;
-}
-.stat-icon{
-  width:56px;
-  height:56px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  margin-bottom:16px;
-}
-.stat-card.blue .stat-icon{
-  background:rgba(37,99,235,0.1);
-  color:#2563eb;
-}
-.stat-card.green .stat-icon{
-  background:rgba(16,185,129,0.1);
-  color:#10b981;
-}
-.stat-card.purple .stat-icon{
-  background:rgba(139,92,246,0.1);
-  color:#8b5cf6;
-}
-.stat-card.orange .stat-icon{
-  background:rgba(245,158,11,0.1);
-  color:#f59e0b;
-}
-.stat-value{
-  font-size:36px;
-  font-weight:700;
-  color:#111827;
-  margin-bottom:8px;
-}
-.stat-label{
-  font-size:14px;
-  color:#6b7280;
-  font-weight:500;
-}
-.actions-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-}
-.action-btn{
-  background:white;
-  border:none;
-  border-radius:16px;
-  padding:28px;
-  display:flex;
-  align-items:center;
-  gap:20px;
-  cursor:pointer;
-  transition:all 0.3s;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  text-align:left;
-}
-.action-btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(0,0,0,0.15);
-}
-.action-icon{
-  width:64px;
-  height:64px;
-  border-radius:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  flex-shrink:0;
-}
-.action-btn.blue .action-icon{
-  background:linear-gradient(135deg,#2563eb,#1e40af);
-  color:white;
-}
-.action-btn.green .action-icon{
-  background:linear-gradient(135deg,#10b981,#059669);
-  color:white;
-}
-.action-btn.purple .action-icon{
-  background:linear-gradient(135deg,#8b5cf6,#7c3aed);
-  color:white;
-}
-.action-btn.orange .action-icon{
-  background:linear-gradient(135deg,#f59e0b,#d97706);
-  color:white;
-}
-.action-btn.red .action-icon{
-  background:linear-gradient(135deg,#ef4444,#dc2626);
-  color:white;
-}
-.action-content h3{
-  font-size:18px;
-  color:#111827;
-  margin-bottom:6px;
-}
-.action-content p{
-  font-size:14px;
-  color:#6b7280;
-}
-.loading{
-  text-align:center;
-  padding:40px;
-}
-.spinner{
-  border:4px solid #e5e7eb;
-  border-top:4px solid #2563eb;
-  border-radius:50%;
-  width:48px;
-  height:48px;
-  animation:spin 0.8s linear infinite;
-  margin:0 auto 16px;
-}
-@keyframes spin{
-  to{transform:rotate(360deg);}
-}
-@media(max-width:768px){
-  .navbar{
-    flex-direction:column;
-    gap:16px;
-  }
-  .stats-grid,.actions-grid{
-    grid-template-columns:1fr;
-  }
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
+.navbar{background:linear-gradient(135deg,#0ea5e9 0%,#0369a1 100%);color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+.navbar-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;}
+.navbar-user{display:flex;align-items:center;gap:20px;}
+.user-info{text-align:right;}
+.user-info strong{display:block;font-size:16px;}
+.user-info span{font-size:13px;opacity:0.9;}
+.btn-logout{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s;}
+.btn-logout:hover{background:white;color:#0369a1;}
+.container{max-width:1400px;margin:0 auto;padding:32px 20px;}
+.welcome{margin-bottom:32px;}
+.welcome h1{font-size:32px;color:#111827;margin-bottom:8px;}
+.welcome p{font-size:16px;color:#6b7280;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-bottom:40px;}
+.stat-card{background:white;border-radius:16px;padding:24px;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform 0.3s;}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.12);}
+.stat-card.blue{border-left:4px solid #0ea5e9;}
+.stat-card.green{border-left:4px solid #10b981;}
+.stat-card.purple{border-left:4px solid #8b5cf6;}
+.stat-card.orange{border-left:4px solid #f59e0b;}
+.stat-icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+.stat-card.blue .stat-icon{background:rgba(14,165,233,0.1);color:#0ea5e9;}
+.stat-card.green .stat-icon{background:rgba(16,185,129,0.1);color:#10b981;}
+.stat-card.purple .stat-icon{background:rgba(139,92,246,0.1);color:#8b5cf6;}
+.stat-card.orange .stat-icon{background:rgba(245,158,11,0.1);color:#f59e0b;}
+.stat-value{font-size:36px;font-weight:700;color:#111827;margin-bottom:8px;}
+.stat-label{font-size:14px;color:#6b7280;font-weight:500;}
+.actions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.action-btn{background:white;border:none;border-radius:16px;padding:28px;display:flex;align-items:center;gap:20px;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:left;}
+.action-btn:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+.action-icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;color:white;}
+.action-btn.blue .action-icon{background:linear-gradient(135deg,#0ea5e9,#0369a1);}
+.action-btn.green .action-icon{background:linear-gradient(135deg,#10b981,#059669);}
+.action-btn.purple .action-icon{background:linear-gradient(135deg,#8b5cf6,#7c3aed);}
+.action-btn.orange .action-icon{background:linear-gradient(135deg,#f59e0b,#d97706);}
+.action-btn.red .action-icon{background:linear-gradient(135deg,#ef4444,#dc2626);}
+.action-btn.dark .action-icon{background:linear-gradient(135deg,#1f2937,#111827);}
+.action-content h3{font-size:18px;color:#111827;margin-bottom:6px;}
+.action-content p{font-size:14px;color:#6b7280;}
+.skeleton-card{background:white;border-radius:16px;padding:24px;height:140px;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+@media(max-width:768px){.navbar{flex-direction:column;gap:16px;}.stats-grid,.actions-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-<div class="navbar">
-  <div class="navbar-brand">
-    <i class="fas fa-briefcase"></i>
-    <span>Field CRM</span>
-  </div>
-  <div class="navbar-user">
-    <div class="user-info">
-      <strong id="userName"></strong>
-      <span id="userRole"></span>
-    </div>
-    <button class="btn-logout" onclick="logout()">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </button>
+<div class=\"navbar\">
+  <div class=\"navbar-brand\"><i class=\"fas fa-hospital\"></i><span>Ratlam Hospital</span></div>
+  <div class=\"navbar-user\">
+    <div class=\"user-info\"><strong id=\"userName\"></strong><span id=\"userRole\"></span></div>
+    <button class=\"btn-logout\" onclick=\"logout()\"><i class=\"fas fa-sign-out-alt\"></i> Logout</button>
   </div>
 </div>
-<div class="container">
-  <div class="welcome">
-    <h1>Welcome back, <span id="welcomeName"></span>! 👋</h1>
+<div class=\"container\">
+  <div class=\"welcome\">
+    <h1>Welcome back, <span id=\"welcomeName\"></span>!</h1>
     <p>Here's what's happening with your sales today.</p>
   </div>
   
-  <div id="loading" class="loading">
-    <div class="spinner"></div>
-    <p>Loading dashboard...</p>
+  <div class=\"stats-grid\" id=\"statsGrid\">
+    <div class=\"stat-card blue\">
+      <div class=\"stat-icon\"><i class=\"fas fa-users\"></i></div>
+      <div class=\"stat-value\" id=\"totalLeads\">-</div>
+      <div class=\"stat-label\">Total Leads</div>
+    </div>
+    <div class=\"stat-card green\">
+      <div class=\"stat-icon\"><i class=\"fas fa-handshake\"></i></div>
+      <div class=\"stat-value\" id=\"totalMeetings\">-</div>
+      <div class=\"stat-label\">Meetings Completed</div>
+    </div>
+    <div class=\"stat-card purple\">
+      <div class=\"stat-icon\"><i class=\"fas fa-chart-line\"></i></div>
+      <div class=\"stat-value\" id=\"activeLeads\">-</div>
+      <div class=\"stat-label\">Active Leads</div>
+    </div>
+    <div class=\"stat-card orange\">
+      <div class=\"stat-icon\"><i class=\"fas fa-clock\"></i></div>
+      <div class=\"stat-value\" id=\"pendingFollowups\">-</div>
+      <div class=\"stat-label\">Pending Followups</div>
+    </div>
   </div>
   
-  <div id="statsContainer" style="display:none;">
-    <div class="stats-grid">
-      <div class="stat-card blue">
-        <div class="stat-icon"><i class="fas fa-users"></i></div>
-        <div class="stat-value" id="totalLeads">0</div>
-        <div class="stat-label">Total Leads</div>
-      </div>
-      <div class="stat-card green">
-        <div class="stat-icon"><i class="fas fa-handshake"></i></div>
-        <div class="stat-value" id="totalMeetings">0</div>
-        <div class="stat-label">Meetings Completed</div>
-      </div>
-      <div class="stat-card purple">
-        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-        <div class="stat-value" id="activeLeads">0</div>
-        <div class="stat-label">Active Leads</div>
-      </div>
-      <div class="stat-card orange">
-        <div class="stat-icon"><i class="fas fa-clock"></i></div>
-        <div class="stat-value" id="pendingFollowups">0</div>
-        <div class="stat-label">Pending Followups</div>
-      </div>
-    </div>
-    
-    <div class="actions-grid">
-      <button class="action-btn blue" onclick="location.href='addlead.html'">
-        <div class="action-icon"><i class="fas fa-user-plus"></i></div>
-        <div class="action-content">
-          <h3>Add New Lead</h3>
-          <p>Create a new lead entry</p>
-        </div>
-      </button>
-      <button class="action-btn green" onclick="location.href='leads.html'">
-        <div class="action-icon"><i class="fas fa-list"></i></div>
-        <div class="action-content">
-          <h3>View Leads</h3>
-          <p>Browse all leads</p>
-        </div>
-      </button>
-      <button class="action-btn purple" onclick="location.href='addmeeting.html'">
-        <div class="action-icon"><i class="fas fa-calendar-plus"></i></div>
-        <div class="action-content">
-          <h3>Add Meeting</h3>
-          <p>Log a new meeting</p>
-        </div>
-      </button>
-      <button class="action-btn orange" onclick="location.href='meetings.html'">
-        <div class="action-icon"><i class="fas fa-calendar-check"></i></div>
-        <div class="action-content">
-          <h3>View Meetings</h3>
-          <p>See all meetings</p>
-        </div>
-      </button>
-      <button class="action-btn red" onclick="location.href='reports.html'">
-        <div class="action-icon"><i class="fas fa-chart-bar"></i></div>
-        <div class="action-content">
-          <h3>Reports</h3>
-          <p>View analytics & insights</p>
-        </div>
-      </button>
-      <button class="action-btn blue" onclick="location.href='admin.html'" id="adminBtn" style="display:none;">
-        <div class="action-icon"><i class="fas fa-cog"></i></div>
-        <div class="action-content">
-          <h3>Admin Panel</h3>
-          <p>Manage system settings</p>
-        </div>
-      </button>
-    </div>
+  <div class=\"actions-grid\">
+    <button class=\"action-btn blue\" onclick=\"location.href='addlead.html'\">
+      <div class=\"action-icon\"><i class=\"fas fa-user-plus\"></i></div>
+      <div class=\"action-content\"><h3>Add New Lead</h3><p>Create a new lead entry</p></div>
+    </button>
+    <button class=\"action-btn green\" onclick=\"location.href='leads.html'\">
+      <div class=\"action-icon\"><i class=\"fas fa-list\"></i></div>
+      <div class=\"action-content\"><h3>View Leads</h3><p>Browse & share leads</p></div>
+    </button>
+    <button class=\"action-btn purple\" onclick=\"location.href='addmeeting.html'\">
+      <div class=\"action-icon\"><i class=\"fas fa-calendar-plus\"></i></div>
+      <div class=\"action-content\"><h3>Add Meeting</h3><p>Log a new meeting</p></div>
+    </button>
+    <button class=\"action-btn orange\" onclick=\"location.href='meetings.html'\">
+      <div class=\"action-icon\"><i class=\"fas fa-calendar-check\"></i></div>
+      <div class=\"action-content\"><h3>View Meetings</h3><p>See all meetings</p></div>
+    </button>
+    <button class=\"action-btn red\" onclick=\"location.href='reports.html'\">
+      <div class=\"action-icon\"><i class=\"fas fa-chart-bar\"></i></div>
+      <div class=\"action-content\"><h3>Reports</h3><p>View analytics</p></div>
+    </button>
+    <button class=\"action-btn dark\" onclick=\"location.href='admin.html'\" id=\"adminBtn\" style=\"display:none;\">
+      <div class=\"action-icon\"><i class=\"fas fa-cog\"></i></div>
+      <div class=\"action-content\"><h3>Admin Panel</h3><p>Manage system</p></div>
+    </button>
   </div>
 </div>
 <script>
-const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+const API = \"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec\";
 
 function checkAuth(){
   const user = localStorage.getItem('user');
+  if(!user){window.location = 'index.html';return false;}
   const role = localStorage.getItem('role');
-  if(!user){
-    window.location = 'index.html';
-    return false;
-  }
   document.getElementById('userName').textContent = user;
   document.getElementById('userRole').textContent = role;
   document.getElementById('welcomeName').textContent = user;
-  
-  if(role === 'Admin'){
-    document.getElementById('adminBtn').style.display = 'flex';
-  }
+  if(role === 'Admin') document.getElementById('adminBtn').style.display = 'flex';
   return true;
 }
 
 async function loadDashboard(){
   if(!checkAuth()) return;
-  
   const user = localStorage.getItem('user');
   const role = localStorage.getItem('role');
   
   try{
     const res = await fetch(API + `?action=getDashboard&user=${encodeURIComponent(user)}&role=${encodeURIComponent(role)}`);
     const data = await res.json();
-    
     if(data.ok){
       document.getElementById('totalLeads').textContent = data.stats.totalLeads;
       document.getElementById('totalMeetings').textContent = data.stats.totalMeetings;
       document.getElementById('activeLeads').textContent = data.stats.activeLeads;
       document.getElementById('pendingFollowups').textContent = data.stats.pendingFollowups;
-      
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('statsContainer').style.display = 'block';
     }
-  }catch(e){
-    console.error(e);
-    document.getElementById('loading').innerHTML = '<p style="color:#ef4444;">Failed to load dashboard</p>';
-  }
+  }catch(e){console.error(e);}
 }
 
 function logout(){
+  const cache = localStorage.getItem('rh_users_cache');
   localStorage.clear();
+  if(cache) localStorage.setItem('rh_users_cache', cache);
   window.location = 'index.html';
 }
 
