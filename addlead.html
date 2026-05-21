@@ -326,10 +326,97 @@ function showMessage(msg,type){
   el.className = 'message ' + type;
 }
 
-window.onload = () => {
-  if(checkAuth()){
-    loadLead();
-  }
+async function loadAudienceTypes(){
+
+try{
+
+const res =
+
+await fetch(
+
+API +
+
+"?action=getConfig"
+
+);
+
+
+const data =
+
+await res.json();
+
+
+if(
+
+data.ok
+
+){
+
+const dropdown =
+
+document.getElementById(
+
+"audienceType"
+
+);
+
+
+dropdown.innerHTML =
+
+'<option value="">Select Type</option>';
+
+
+
+(data.config.audienceTypes || [])
+
+.forEach(
+
+item=>{
+
+dropdown.innerHTML +=
+
+`<option value="${item}">
+
+${item}
+
+</option>`;
+
+}
+
+);
+
+
+}
+
+
+}
+catch(e){
+
+console.log(e);
+
+}
+
+
+}
+
+
+
+window.onload =
+
+async ()=>{
+
+if(
+
+checkAuth()
+
+){
+
+await loadAudienceTypes();
+
+loadLead();
+
+}
+
 };
 </script>
 </body>
