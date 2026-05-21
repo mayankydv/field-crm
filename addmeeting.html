@@ -1,345 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Meeting - Field CRM</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset=\"UTF-8\">
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+<title>Add Meeting - Ratlam Hospital CRM</title>
+<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">
+<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-body{
-  font-family:'Inter',sans-serif;
-  background:#f3f4f6;
-  min-height:100vh;
-}
-.navbar{
-  background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);
-  color:white;
-  padding:20px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-.navbar-brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:24px;
-  font-weight:700;
-  cursor:pointer;
-}
-.btn-back{
-  padding:10px 20px;
-  background:rgba(255,255,255,0.2);
-  border:2px solid white;
-  color:white;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
-  transition:all 0.3s;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-.btn-back:hover{
-  background:white;
-  color:#8b5cf6;
-}
-.container{
-  max-width:800px;
-  margin:0 auto;
-  padding:32px 20px;
-}
-.form-card{
-  background:white;
-  border-radius:16px;
-  padding:32px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-.form-card h1{
-  font-size:28px;
-  color:#111827;
-  margin-bottom:8px;
-}
-.form-card p{
-  color:#6b7280;
-  margin-bottom:32px;
-}
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:24px;
-}
-.form-group{
-  margin-bottom:24px;
-}
-.form-group label{
-  display:block;
-  font-size:14px;
-  font-weight:600;
-  color:#374151;
-  margin-bottom:8px;
-}
-.form-group label .required{
-  color:#ef4444;
-}
-input,select,textarea{
-  width:100%;
-  padding:12px 16px;
-  border:2px solid #e5e7eb;
-  border-radius:10px;
-  font-size:15px;
-  font-family:'Inter',sans-serif;
-  transition:all 0.3s;
-}
-input:focus,select:focus,textarea:focus{
-  outline:none;
-  border-color:#8b5cf6;
-  box-shadow:0 0 0 4px rgba(139,92,246,0.1);
-}
-textarea{
-  resize:vertical;
-  min-height:100px;
-}
-.gps-section{
-  background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.1));
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:24px;
-}
-.gps-status{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:12px;
-}
-.gps-icon{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  color:#8b5cf6;
-}
-.gps-info h3{
-  font-size:16px;
-  color:#111827;
-  margin-bottom:4px;
-}
-.gps-info p{
-  font-size:13px;
-  color:#6b7280;
-  margin:0;
-}
-.btn-gps{
-  width:100%;
-  padding:12px;
-  background:white;
-  color:#8b5cf6;
-  border:2px solid #8b5cf6;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all 0.3s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-}
-.btn-gps:hover{
-  background:#8b5cf6;
-  color:white;
-}
-.btn-gps.active{
-  background:#10b981;
-  border-color:#10b981;
-  color:white;
-}
-.form-actions{
-  display:flex;
-  gap:16px;
-  margin-top:32px;
-}
-.btn{
-  padding:14px 32px;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all 0.3s;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-.btn-primary{
-  background:linear-gradient(135deg,#8b5cf6,#7c3aed);
-  color:white;
-  flex:1;
-}
-.btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(139,92,246,0.4);
-}
-.btn-secondary{
-  background:#f3f4f6;
-  color:#374151;
-}
-.btn-secondary:hover{
-  background:#e5e7eb;
-}
-.message{
-  padding:16px;
-  border-radius:10px;
-  margin-top:20px;
-  font-weight:500;
-  display:none;
-}
-.message.success{
-  background:#d1fae5;
-  color:#065f46;
-  display:block;
-}
-.message.error{
-  background:#fee2e2;
-  color:#991b1b;
-  display:block;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#f3f4f6;min-height:100vh;}
+.navbar{background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:white;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;}
+.navbar-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;cursor:pointer;}
+.btn-back{padding:10px 20px;background:rgba(255,255,255,0.2);border:2px solid white;color:white;border-radius:8px;cursor:pointer;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-back:hover{background:white;color:#8b5cf6;}
+.container{max-width:800px;margin:0 auto;padding:32px 20px;}
+.form-card{background:white;border-radius:16px;padding:32px;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+.form-card h1{font-size:28px;color:#111827;margin-bottom:8px;}
+.form-card p{color:#6b7280;margin-bottom:32px;}
+.gps-section{background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.1));padding:20px;border-radius:12px;margin-bottom:24px;}
+.gps-status{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.gps-icon{width:48px;height:48px;border-radius:12px;background:white;display:flex;align-items:center;justify-content:center;font-size:20px;color:#8b5cf6;}
+.gps-info h3{font-size:16px;color:#111827;margin-bottom:4px;}
+.gps-info p{font-size:13px;color:#6b7280;}
+.btn-gps{width:100%;padding:12px;background:white;color:#8b5cf6;border:2px solid #8b5cf6;border-radius:10px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-gps:hover{background:#8b5cf6;color:white;}
+.btn-gps.active{background:#10b981;border-color:#10b981;color:white;}
+.required{color:#ef4444;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:14px;font-weight:600;color:#374151;margin-bottom:8px;}
+input,select,textarea{width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#8b5cf6;box-shadow:0 0 0 4px rgba(139,92,246,0.1);}
+textarea{resize:vertical;min-height:100px;}
+.form-actions{display:flex;gap:16px;margin-top:32px;}
+.btn{padding:14px 32px;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white;flex:1;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(139,92,246,0.4);}
+.btn-primary:disabled{opacity:0.6;cursor:not-allowed;}
+.btn-secondary{background:#f3f4f6;color:#374151;}
+.message{padding:16px;border-radius:10px;margin-top:20px;font-weight:500;display:none;}
+.message.success{background:#d1fae5;color:#065f46;display:block;}
+.message.error{background:#fee2e2;color:#991b1b;display:block;}
+.loading{text-align:center;padding:40px;}
+.spinner{border:4px solid #e5e7eb;border-top:4px solid #8b5cf6;border-radius:50%;width:48px;height:48px;animation:spin 0.8s linear infinite;margin:0 auto 16px;}
+@keyframes spin{to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
-<div class="navbar">
-  <div class="navbar-brand" onclick="location.href='dashboard.html'">
-    <i class="fas fa-briefcase"></i>
-    <span>Field CRM</span>
-  </div>
-  <a href="meetings.html" class="btn-back">
-    <i class="fas fa-arrow-left"></i> Back to Meetings
-  </a>
+<div class=\"navbar\">
+  <div class=\"navbar-brand\" onclick=\"location.href='dashboard.html'\"><i class=\"fas fa-hospital\"></i><span>Ratlam Hospital</span></div>
+  <a href=\"meetings.html\" class=\"btn-back\"><i class=\"fas fa-arrow-left\"></i> Back to Meetings</a>
 </div>
-<div class="container">
-  <div class="form-card">
-    <h1><i class="fas fa-calendar-plus"></i> Add New Meeting</h1>
-    <p>Log your meeting details and capture location</p>
+<div class=\"container\">
+  <div class=\"form-card\">
+    <h1 id=\"formTitle\"><i class=\"fas fa-calendar-plus\"></i> Add New Meeting</h1>
+    <p id=\"formSubtitle\">Log your meeting details and capture location</p>
     
-    <div class="gps-section">
-      <div class="gps-status">
-        <div class="gps-icon">
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <div class="gps-info">
-          <h3>GPS Location</h3>
-          <p id="gpsStatus">Not captured yet</p>
+    <div class=\"gps-section\">
+      <div class=\"gps-status\">
+        <div class=\"gps-icon\"><i class=\"fas fa-map-marker-alt\"></i></div>
+        <div class=\"gps-info\">
+          <h3>GPS Location <span class=\"required\">*</span></h3>
+          <p id=\"gpsStatus\">Required - Please capture your location</p>
         </div>
       </div>
-      <button type="button" class="btn-gps" id="gpsBtn" onclick="captureGPS()">
-        <i class="fas fa-crosshairs"></i> Capture Current Location
+      <button type=\"button\" class=\"btn-gps\" id=\"gpsBtn\" onclick=\"captureGPS()\">
+        <i class=\"fas fa-crosshairs\"></i> Capture Current Location
       </button>
     </div>
     
-    <form onsubmit="saveMeeting(event)">
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Select Lead <span class="required">*</span></label>
-          <select id="leadId" required>
-            <option value="">Loading leads...</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Purpose <span class="required">*</span></label>
-          <select id="purpose" required>
-            <option value="">Select Purpose</option>
-            <option value="First Contact">First Contact</option>
-            <option value="Follow Up">Follow Up</option>
-            <option value="Presentation">Presentation</option>
-            <option value="Demo">Demo</option>
-            <option value="Negotiation">Negotiation</option>
-            <option value="Closing">Closing</option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label>Meeting Notes <span class="required">*</span></label>
-        <textarea id="notes" required placeholder="Enter detailed notes about the meeting..."></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label>Outcome</label>
-        <select id="outcome">
-          <option value="">Select Outcome</option>
-          <option value="Positive">Positive</option>
-          <option value="Neutral">Neutral</option>
-          <option value="Negative">Negative</option>
-        </select>
-      </div>
-      
-      <input type="hidden" id="latitude">
-      <input type="hidden" id="longitude">
-      
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">
-          <i class="fas fa-save"></i> Save Meeting
+    <div id=\"formLoading\" class=\"loading\">
+      <div class=\"spinner\"></div>
+      <p>Loading form...</p>
+    </div>
+    
+    <form id=\"dynamicForm\" onsubmit=\"saveMeeting(event)\" style=\"display:none;\">
+      <div id=\"formFields\"></div>
+      <input type=\"hidden\" id=\"latitude\">
+      <input type=\"hidden\" id=\"longitude\">
+      <div class=\"form-actions\">
+        <button type=\"submit\" class=\"btn btn-primary\" id=\"saveBtn\">
+          <i class=\"fas fa-save\"></i> Save Meeting
         </button>
-        <button type="button" class="btn btn-secondary" onclick="location.href='meetings.html'">
-          Cancel
-        </button>
+        <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location.href='meetings.html'\">Cancel</button>
       </div>
     </form>
     
-    <div class="message" id="message"></div>
+    <div class=\"message\" id=\"message\"></div>
   </div>
 </div>
 <script>
-const API = "https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec";
+const API = \"https://script.google.com/macros/s/AKfycbyiDeeHBMrVg4KE3n0g4mhxjXZQ0T3shITi5APgJ531SguE_pZD1APvWgm39MjipUsNbQ/exec\";
+let formSchema = null;
+let leadsList = [];
 
 function checkAuth(){
-  if(!localStorage.getItem('user')){
-    window.location = 'index.html';
-    return false;
-  }
+  if(!localStorage.getItem('user')){window.location='index.html';return false;}
   return true;
 }
 
-async function loadLeads(){
-  const user = localStorage.getItem('user');
-  const role = localStorage.getItem('role');
-  
+async function loadFormSchema(){
   try{
-    const res = await fetch(API + `?action=getLeads&user=${encodeURIComponent(user)}&role=${encodeURIComponent(role)}`);
-    const data = await res.json();
+    // Load schema and leads in parallel
+    const [schemaRes, leadsRes] = await Promise.all([
+      fetch(API + '?action=getFormSchema&formName=meetings'),
+      fetch(API + `?action=getLeads&user=${encodeURIComponent(localStorage.getItem('user'))}&role=${encodeURIComponent(localStorage.getItem('role'))}`)
+    ]);
+    const schemaData = await schemaRes.json();
+    const leadsData = await leadsRes.json();
     
-    if(data.ok){
-      const select = document.getElementById('leadId');
-      select.innerHTML = '<option value="">-- Select Lead --</option>';
-      data.leads.filter(l => !l.archived).forEach(lead => {
-        select.innerHTML += `<option value="${lead.leadId}">${lead.organisation} (${lead.leadId})</option>`;
-      });
+    if(schemaData.ok){
+      formSchema = schemaData.schema;
+      leadsList = leadsData.ok ? leadsData.leads.filter(l => !l.archived) : [];
+      renderForm();
     }
   }catch(e){
-    console.error(e);
+    document.getElementById('formLoading').innerHTML = '<p style=\"color:#ef4444;\">Failed to load form.</p>';
   }
+}
+
+function renderForm(){
+  document.getElementById('formTitle').innerHTML = '<i class=\"fas fa-calendar-plus\"></i> ' + (formSchema.title || 'Add Meeting');
+  document.getElementById('formSubtitle').textContent = formSchema.subtitle || '';
+  
+  const container = document.getElementById('formFields');
+  container.innerHTML = formSchema.fields.map(field => renderField(field)).join('');
+  
+  document.getElementById('formLoading').style.display = 'none';
+  document.getElementById('dynamicForm').style.display = 'block';
+}
+
+function renderField(field){
+  const reqMark = field.required ? '<span class=\"required\">*</span>' : '';
+  const reqAttr = field.required ? 'required' : '';
+  const placeholder = field.placeholder || '';
+  
+  let inputHtml = '';
+  
+  if(field.type === 'leadSelect'){
+    const opts = leadsList.map(l => `<option value=\"${l.leadId}\">${l.organisation} (${l.leadId})</option>`).join('');
+    inputHtml = `<select id=\"field_${field.id}\" ${reqAttr}><option value=\"\">-- Select Lead --</option>${opts}</select>`;
+  } else if(field.type === 'dropdown'){
+    const opts = (field.options || []).map(o => `<option value=\"${o}\">${o}</option>`).join('');
+    inputHtml = `<select id=\"field_${field.id}\" ${reqAttr}><option value=\"\">-- Select --</option>${opts}</select>`;
+  } else if(field.type === 'textarea'){
+    inputHtml = `<textarea id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\"></textarea>`;
+  } else if(field.type === 'date'){
+    inputHtml = `<input type=\"date\" id=\"field_${field.id}\" ${reqAttr}>`;
+  } else if(field.type === 'number'){
+    inputHtml = `<input type=\"number\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\">`;
+  } else if(field.type === 'phone'){
+    inputHtml = `<input type=\"tel\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\" pattern=\"[0-9]{10}\" maxlength=\"10\">`;
+  } else if(field.type === 'email'){
+    inputHtml = `<input type=\"email\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\">`;
+  } else {
+    inputHtml = `<input type=\"text\" id=\"field_${field.id}\" ${reqAttr} placeholder=\"${placeholder}\">`;
+  }
+  
+  return `<div class=\"form-group\"><label>${field.label} ${reqMark}</label>${inputHtml}</div>`;
 }
 
 function captureGPS(){
   if(!navigator.geolocation){
-    showMessage('GPS not supported by your browser','error');
+    showMessage('GPS not supported','error');
     return;
   }
   
   const btn = document.getElementById('gpsBtn');
   btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Capturing...';
+  btn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Capturing...';
   
   navigator.geolocation.getCurrentPosition(
     (position) => {
@@ -347,12 +175,12 @@ function captureGPS(){
       document.getElementById('longitude').value = position.coords.longitude;
       document.getElementById('gpsStatus').textContent = `Captured: ${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)}`;
       btn.className = 'btn-gps active';
-      btn.innerHTML = '<i class="fas fa-check"></i> Location Captured';
+      btn.innerHTML = '<i class=\"fas fa-check\"></i> Location Captured';
       btn.disabled = false;
     },
     (error) => {
-      showMessage('Failed to capture GPS. Please enable location.','error');
-      btn.innerHTML = '<i class="fas fa-crosshairs"></i> Capture Current Location';
+      showMessage('GPS denied. Location is MANDATORY for meetings. Please allow location.','error');
+      btn.innerHTML = '<i class=\"fas fa-crosshairs\"></i> Try Again';
       btn.disabled = false;
     },
     { enableHighAccuracy: true, timeout: 10000 }
@@ -362,35 +190,43 @@ function captureGPS(){
 async function saveMeeting(e){
   e.preventDefault();
   
+  if(!document.getElementById('latitude').value || !document.getElementById('longitude').value){
+    showMessage('GPS location is MANDATORY. Please capture location first.','error');
+    return;
+  }
+  
+  const saveBtn = document.getElementById('saveBtn');
+  saveBtn.disabled = true;
+  saveBtn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Saving...';
+  
   const meetingData = {
     action: 'addMeeting',
-    leadId: document.getElementById('leadId').value,
-    purpose: document.getElementById('purpose').value,
-    notes: document.getElementById('notes').value,
-    outcome: document.getElementById('outcome').value,
+    rep: localStorage.getItem('user'),
     latitude: document.getElementById('latitude').value,
-    longitude: document.getElementById('longitude').value,
-    rep: localStorage.getItem('user')
+    longitude: document.getElementById('longitude').value
   };
   
+  formSchema.fields.forEach(field => {
+    const el = document.getElementById('field_' + field.id);
+    if(el) meetingData[field.id] = el.value;
+  });
+  
   try{
-    const res = await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify(meetingData)
-    });
+    const res = await fetch(API, {method:'POST', body: JSON.stringify(meetingData)});
     const data = await res.json();
     
     if(data.ok){
-      showMessage('Meeting saved successfully! Redirecting...','success');
-      setTimeout(() => {
-        window.location = 'meetings.html';
-      }, 1500);
+      showMessage('Meeting saved! Redirecting...','success');
+      setTimeout(() => window.location = 'meetings.html', 1200);
     }else{
-      showMessage('Failed to save meeting','error');
+      showMessage('Failed to save','error');
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = '<i class=\"fas fa-save\"></i> Save Meeting';
     }
   }catch(e){
-    console.error(e);
-    showMessage('Server error. Please try again.','error');
+    showMessage('Server error','error');
+    saveBtn.disabled = false;
+    saveBtn.innerHTML = '<i class=\"fas fa-save\"></i> Save Meeting';
   }
 }
 
@@ -400,11 +236,7 @@ function showMessage(msg,type){
   el.className = 'message ' + type;
 }
 
-window.onload = () => {
-  if(checkAuth()){
-    loadLeads();
-  }
-};
+window.onload = () => {if(checkAuth()) loadFormSchema();};
 </script>
 </body>
 </html>
